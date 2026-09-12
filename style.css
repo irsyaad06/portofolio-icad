@@ -91,7 +91,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   display: flex;
   flex-direction: row;
   background-color: var(--bg);
-  box-shadow: 0 -10px 40px rgba(0,0,0,0.02);
+  box-shadow: 0 -15px 40px rgba(0,0,0,0.08);
 }
 
 
@@ -273,6 +273,52 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .hero__about-btn:hover {
   background: var(--text);
   color: var(--bg);
+}
+
+/* Scroll Indicator */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  animation: fadeUp 0.9s var(--ease-expo) both 0.7s;
+}
+
+.hero__scroll-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background-color: var(--border-strong);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero__scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text);
+  animation: scrollLine 2s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
 }
 
 /* -----------------------------------------------------------------------
@@ -1276,9 +1322,11 @@ body.detail-open .contact-curtain-wrap {
   transition: opacity var(--dur-mid) var(--ease-expo), visibility 0s;
 }
 
-body.about-open .global-header {
+body.about-open .global-header,
+body.not-on-hero .menu-toggle {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity var(--dur-mid) var(--ease-expo), visibility 0s var(--dur-mid);
 }
 
@@ -1289,7 +1337,7 @@ body.about-open .global-header {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text);
-  transition: color var(--dur-mid) var(--ease-expo);
+  transition: color var(--dur-mid) var(--ease-expo), opacity var(--dur-mid) var(--ease-expo), visibility 0s;
 }
 
 body.menu-open .global-header button {
@@ -1470,5 +1518,10 @@ body.menu-open .page-wrapper {
   }
   .detail-panel__inner {
     padding: 6rem 1.5rem 4rem;
+  }
+
+  /* Responsive for menu open rotation */
+  body.menu-open .page-wrapper {
+    transform: translate(-75vw, 5vh) rotate(-5deg) scale(0.85);
   }
 }

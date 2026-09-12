@@ -204,7 +204,13 @@
     aboutBtn.focus();
   }
 
-  aboutBtn.addEventListener('click', openAbout);
+  aboutBtn.addEventListener('click', () => {
+    if (window.innerWidth <= 860) {
+      window.location.href = 'about.html';
+      return;
+    }
+    openAbout();
+  });
   aboutClose.addEventListener('click', closeAbout);
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.body.classList.contains('about-open')) {
@@ -293,6 +299,12 @@
   const setActive = id => {
     scrollerLinks.forEach(l => l.classList.remove('is-active'));
     if (linkMap[id]) linkMap[id].classList.add('is-active');
+    
+    if (id === 'hero') {
+      document.body.classList.remove('not-on-hero');
+    } else {
+      document.body.classList.add('not-on-hero');
+    }
   };
 
   setActive('hero');
@@ -309,6 +321,15 @@
   });
 
   sections.forEach(s => sectionObserver.observe(s));
+
+  // Fix: Force 'hero' active when scrolled to top (since sticky hero doesn't re-trigger observer on scroll up)
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight * 0.3) {
+      if (document.body.classList.contains('not-on-hero')) {
+        setActive('hero');
+      }
+    }
+  }, { passive: true });
 
   /* =========================================================================
      2. SMOOTH ANCHOR CLICKS
