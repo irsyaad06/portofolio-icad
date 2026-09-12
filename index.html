@@ -18,20 +18,65 @@
 <body>
 
   <!-- =====================================================
+       GLOBAL HEADER (Language & Menu)
+  ====================================================== -->
+  <header class="global-header">
+    <button class="lang-switch" id="lang-switch" aria-label="Switch Language">EN / ID</button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+      <span class="menu-toggle__text" id="menu-toggle-text">MENU</span>
+    </button>
+  </header>
+
+  <!-- =====================================================
+       FULLSCREEN MENU
+  ====================================================== -->
+  <nav class="fullscreen-menu" id="fullscreen-menu" aria-hidden="true">
+    <div class="fullscreen-menu__inner">
+      <ul class="fullscreen-menu__list">
+        <li><a href="#hero" class="fullscreen-menu__link" data-menu-target="hero">HOME</a></li>
+        <li><a href="#work" class="fullscreen-menu__link" data-menu-target="work">WORKS</a></li>
+        <li><a href="#organization" class="fullscreen-menu__link" data-menu-target="organization">EXPERIENCE</a></li>
+        <li><a href="#contact" class="fullscreen-menu__link" data-menu-target="contact">CONTACT</a></li>
+      </ul>
+      <div class="fullscreen-menu__footer">
+        <div class="fullscreen-menu__theme-toggle">
+          <p class="is-active">LIGHT <span class="active-dot"></span></p>
+          <p>DARK</p>
+          <p>SYSTEM</p>
+        </div>
+        <div class="fullscreen-menu__legal">
+          <a href="#">PRIVACY POLICY</a>
+          <a href="#">TERMS OF SERVICE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       PAGE WRAPPER (For 3D Rotation Effect)
+  ====================================================== -->
+  <div class="page-wrapper" id="page-wrapper">
+
+  <!-- =====================================================
        01 HERO — Full width, sticky background
   ====================================================== -->
   <section id="hero" class="section section--hero" aria-label="Hero introduction">
     <div class="section__inner">
-      <p class="hero__eyebrow" aria-hidden="true">Creative Developer — </p>
+      <p class="hero__eyebrow" aria-hidden="true" data-i18n="hero_eyebrow">Creative Developer — </p>
       <h1 class="hero__headline">
         <span class="hero__line">I AM</span>
-        <span class="hero__line">IRSYAAD<span class="hero__dot" id="hero-dot">.</span></span>
+        <span class="hero__line">
+          <span class="hero__animated-wrapper">
+            <span class="hero__animated-spacer" aria-hidden="true">A DEVELOPER</span>
+            <span id="hero-animated-text" class="hero__animated-text">IRSYAAD</span>
+          </span><span class="hero__dot" id="hero-dot">.</span>
+        </span>
       </h1>
-      <p class="hero__sub">Crafting distinct digital experiences.<br>No filler.</p>
+      <p class="hero__sub" data-i18n="hero_sub">Crafting distinct digital experiences.<br>No filler.</p>
       <div class="hero__actions">
-        <button class="hero__about-btn" id="about-btn" aria-label="About me">About</button>
+        <button class="hero__about-btn" id="about-btn" aria-label="About me" data-i18n="hero_about">About</button>
         <a href="#work" class="hero__cta" aria-label="View selected works">
-          <span>View Work</span>
+          <span data-i18n="hero_cta">View Work</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M1 7H13M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -50,7 +95,8 @@
       <ol class="scroller__list">
         <li><a href="#hero"    class="scroller__link" data-section="hero"    aria-label="Hero">01</a></li>
         <li><a href="#work"    class="scroller__link" data-section="work"    aria-label="Works">02</a></li>
-        <li><a href="#contact" class="scroller__link" data-section="contact" aria-label="Contact">03</a></li>
+        <li><a href="#organization" class="scroller__link" data-section="organization" aria-label="Organization">03</a></li>
+        <li><a href="#contact" class="scroller__link" data-section="contact" aria-label="Contact">04</a></li>
       </ol>
       <span class="scroller__label" aria-hidden="true">SCROLL</span>
     </nav>
@@ -62,8 +108,8 @@
       <section id="work" class="section section--work" aria-label="Selected works">
         <div class="section__inner">
           <header class="section__header">
-            <span class="section__kicker">02 / PORTFOLIO</span>
-            <h2 class="section__title">Selected<br>Works.</h2>
+            <span class="section__kicker" data-i18n="work_kicker">02 / PORTFOLIO</span>
+            <h2 class="section__title" data-i18n="work_title">Selected<br>Works.</h2>
           </header>
 
           <div class="work-list" role="list">
@@ -85,7 +131,7 @@
                   </ul>
                 </div>
                 <div class="card__arrow" aria-hidden="true">
-                  <span>View Detail</span>
+                  <span data-i18n="card_btn">View Detail</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
@@ -182,18 +228,139 @@
           </div>
           <div class="visual__text-block">
             <p class="visual__big-text">IRSYAAD.</p>
-            <p class="visual__tagline">Aku ada<br>karena aku berkarya</p>
+            <p class="visual__tagline" data-i18n="visual_tagline">AKU ADA<br>KARENA AKU BERKARYA</p>
           </div>
           <div class="visual__meta">
-            <span>Based in Indonesia</span>
-            <span>Open to work</span>
-            <span>2024</span>
+            <span>Based in Bandung, Indonesia</span>
+            <span>Enjoy the experiences</span>
+            <span>peace out</span>
           </div>
         </div>
       </aside>
     </div><!-- /right-col -->
 
   </div><!-- /split-layout -->
+
+  <!-- =====================================================
+       03 ORGANIZATIONAL EXPERIENCE (Full Page Horizontal Scroll)
+  ====================================================== -->
+  <div id="organization" class="section org-scroll-wrapper" aria-label="Organizational Experience">
+    <div class="org-sticky-container">
+      <section class="section--org">
+        <div class="section__inner">
+          <header class="section__header">
+            <span class="section__kicker" id="org-kicker" data-i18n="org_kicker">03 / EXPERIENCE</span>
+            <h2 class="section__title" id="org-title" data-i18n="org_title">Organisasi &<br>Peran.</h2>
+          </header>
+
+          <div class="timeline-container">
+            <div class="timeline-track" id="org-track" role="list">
+              <div class="timeline-line" aria-hidden="true"></div>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2022 - 2023</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">01</span>
+                  <h3 class="timeline-item__title" id="org-1-title" data-i18n="org_1_title">Ketua Himpunan<br>Mahasiswa Informatika</h3>
+                  <p class="timeline-item__desc" id="org-1-desc" data-i18n="org_1_desc">Memimpin lebih dari 50 anggota pengurus dalam menjalankan program kerja tingkat universitas dan nasional. Bertanggung jawab atas pengelolaan anggaran dan koordinasi antar divisi.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2021 - 2022</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">02</span>
+                  <h3 class="timeline-item__title" id="org-2-title" data-i18n="org_2_title">Kepala Divisi<br>Penelitian & Pengembangan</h3>
+                  <p class="timeline-item__desc" id="org-2-desc" data-i18n="org_2_desc">Merumuskan kurikulum pelatihan teknologi untuk anggota himpunan, termasuk workshop Web Development dan IoT. Meningkatkan partisipasi mahasiswa dalam lomba tingkat nasional.</p>
+                </div>
+              </article>
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2020 - 2021</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">03</span>
+                  <h3 class="timeline-item__title" id="org-3-title" data-i18n="org_3_title">Staf Ahli<br>Teknologi Informasi</h3>
+                  <p class="timeline-item__desc" id="org-3-desc" data-i18n="org_3_desc">Membantu pelaksanaan pelatihan teknologi dasar bagi mahasiswa baru dan menjadi asisten laboratorium untuk mata kuliah pemrograman.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2019 - 2020</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">04</span>
+                  <h3 class="timeline-item__title" id="org-4-title" data-i18n="org_4_title">Koordinator<br>Media Komunikasi</h3>
+                  <p class="timeline-item__desc" id="org-4-desc" data-i18n="org_4_desc">Mengelola publikasi kegiatan organisasi melalui platform digital. Mendesain poster dan konten interaktif untuk media sosial.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2019</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">05</span>
+                  <h3 class="timeline-item__title" id="org-5-title" data-i18n="org_5_title">Panitia Inti<br>Dies Natalis</h3>
+                  <p class="timeline-item__desc" id="org-5-desc" data-i18n="org_5_desc">Menyelenggarakan acara perayaan tahunan yang dihadiri ratusan mahasiswa. Mengkoordinasikan acara hiburan dan kompetisi akademik.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2018 - 2019</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">06</span>
+                  <h3 class="timeline-item__title" id="org-6-title" data-i18n="org_6_title">Anggota<br>Badan Eksekutif</h3>
+                  <p class="timeline-item__desc" id="org-6-desc" data-i18n="org_6_desc">Berperan aktif dalam menyalurkan aspirasi mahasiswa. Turut serta dalam perumusan kebijakan kegiatan kemahasiswaan tingkat fakultas.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2018</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">07</span>
+                  <h3 class="timeline-item__title" id="org-7-title" data-i18n="org_7_title">Ketua Pelaksana<br>Bakti Sosial</h3>
+                  <p class="timeline-item__desc" id="org-7-desc" data-i18n="org_7_desc">Memimpin kampanye penggalangan dana dan penyaluran bantuan ke daerah tertinggal. Mengatur logistik dan relawan di lapangan.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2017 - 2018</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">08</span>
+                  <h3 class="timeline-item__title" id="org-8-title" data-i18n="org_8_title">Sekretaris<br>Kepanitiaan Lomba</h3>
+                  <p class="timeline-item__desc" id="org-8-desc" data-i18n="org_8_desc">Menyusun proposal kegiatan, mengurus perizinan administrasi, dan mendokumentasikan seluruh rangkaian acara perlombaan tingkat regional.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2017</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">09</span>
+                  <h3 class="timeline-item__title" id="org-9-title" data-i18n="org_9_title">Relawan<br>Pendidikan</h3>
+                  <p class="timeline-item__desc" id="org-9-desc" data-i18n="org_9_desc">Mengajar teknologi dasar komputer kepada anak-anak sekolah dasar. Menyusun kurikulum pengenalan internet yang aman.</p>
+                </div>
+              </article>
+
+              <article class="timeline-item reveal" role="listitem">
+                <div class="timeline-item__year">2016</div>
+                <div class="timeline-item__node"></div>
+                <div class="timeline-item__content">
+                  <span class="timeline-item__index">10</span>
+                  <h3 class="timeline-item__title" id="org-10-title" data-i18n="org_10_title">Peserta<br>Diklat Dasar</h3>
+                  <p class="timeline-item__desc" id="org-10-desc" data-i18n="org_10_desc">Mempelajari kepemimpinan dasar, kerja sama tim, dan manajemen organisasi sebagai langkah awal bergabung dalam himpunan mahasiswa.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 
   <!-- =====================================================
        03 CONTACT — Sticky curtain (sits behind split-layout)
@@ -203,14 +370,14 @@
   <div class="contact-curtain-wrap">
     <section id="contact" class="section section--contact-full" aria-label="Contact section">
       <div class="contact-full__inner reveal">
-        <h2 class="contact-full__title">Let's build<br><span class="contact-full__wave"><span style="--i:0">s</span><span style="--i:1">o</span><span style="--i:2">m</span><span style="--i:3">e</span><span style="--i:4">t</span><span style="--i:5">h</span><span style="--i:6">i</span><span style="--i:7">n</span><span style="--i:8">g</span><span style="--i:9">.</span></span></h2>
+        <h2 class="contact-full__title"><span data-i18n="contact_title">Let's build<br></span><span class="contact-full__wave"><span style="--i:0">s</span><span style="--i:1">o</span><span style="--i:2">m</span><span style="--i:3">e</span><span style="--i:4">t</span><span style="--i:5">h</span><span style="--i:6">i</span><span style="--i:7">n</span><span style="--i:8">g</span><span style="--i:9">.</span></span></h2>
         
         <div class="contact-full__links">
           <a href="mailto:irsyaadfatahilah@gmail.com" class="contact-full__link" aria-label="Email Irsyaad">irsyaadfatahilah@gmail.com</a>
           
           <div class="contact-full__socials">
             <a href="https://instagram.com/caadd__" target="_blank" rel="noopener noreferrer" class="contact-full__social">Instagram ↗</a>
-            <a href="https://linkedin.com/in/irsyaad06" target="_blank" rel="noopener noreferrer" class="contact-full__social">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/irsyaad-fatahilah-1329b91b5/" target="_blank" rel="noopener noreferrer" class="contact-full__social">LinkedIn ↗</a>
             <a href="https://github.com/irsyaad06" target="_blank" rel="noopener noreferrer" class="contact-full__social">GitHub ↗</a>
           </div>
         </div>
@@ -221,6 +388,7 @@
       </footer>
     </section>
   </div>
+  </div><!-- /page-wrapper -->
 
   <!-- =====================================================
        PROJECT IMAGES OVERLAY — Fixed to left side
@@ -250,12 +418,6 @@
        ABOUT CIRCLE — Expands from hero dot on click
   ====================================================== -->
   <div class="about-circle" id="about-circle" aria-hidden="true" role="dialog" aria-modal="true" aria-label="About Irsyaad">
-    <button class="about-circle__close" id="about-close" aria-label="Close about">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      Kembali
-    </button>
     <div class="about-circle__content">
 
       <!-- LEFT: Photo -->
@@ -268,11 +430,11 @@
 
       <!-- RIGHT: Info -->
       <div class="about-circle__text">
-        <p class="about-circle__label">About me</p>
+        <p class="about-circle__label" data-i18n="about_label">About me</p>
         <h2 class="about-circle__name">Irsyaad<br>Fatahilah</h2>
-        <p class="about-circle__title">Creative Developer · Indonesia</p>
+        <p class="about-circle__title" data-i18n="about_title">Creative Developer · Indonesia</p>
         <div class="about-circle__divider"></div>
-        <p class="about-circle__bio">I build digital experiences that are sharp, purposeful, and crafted to last. From full-stack web apps to embedded IoT systems — if it runs on a screen, I've probably shipped it.</p>
+        <p class="about-circle__bio" data-i18n="about_bio">I build digital experiences that are sharp, purposeful, and crafted to last. From full-stack web apps to embedded IoT systems — if it runs on a screen, I've probably shipped it.</p>
         <div class="about-circle__skills">
           <span class="about-circle__skill">Laravel</span>
           <span class="about-circle__skill">Vue.js</span>
@@ -288,6 +450,13 @@
 
     </div>
   </div>
+
+  <button class="about-circle__close" id="about-close" aria-label="Close about">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span data-i18n="about_btn_close">Kembali</span>
+  </button>
 
   <script src="main.js"></script>
 </body>

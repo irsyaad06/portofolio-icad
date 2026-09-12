@@ -51,7 +51,7 @@ html {
 
 body {
   width: 100%;
-  background-color: var(--bg);
+  background-color: #000; /* Black for menu reveal */
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -275,6 +275,45 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   color: var(--bg);
 }
 
+/* -----------------------------------------------------------------------
+   HERO ANIMATED TEXT
+   ----------------------------------------------------------------------- */
+.hero__animated-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.hero__animated-spacer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero__animated-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.text-out {
+  animation: textOut 0.4s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+.text-in {
+  animation: textIn 0.4s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+@keyframes textOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-30px); }
+}
+
+@keyframes textIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* The dot in IRSYAAD. — just fades out as circle expands from its position */
 .hero__dot {
   display: inline-block;
@@ -319,9 +358,9 @@ body.about-open .about-circle {
 
 /* Close button — top right, styled as pill with text */
 .about-circle__close {
-  position: absolute;
-  top: 1.8rem;
-  right: 1.8rem;
+  position: fixed;
+  top: 2.5rem;
+  right: 4vw;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -334,9 +373,17 @@ body.about-open .about-circle {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  z-index: 10;
-  transition: background var(--dur-fast), color var(--dur-fast);
+  z-index: 1000;
   backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s 0.3s, background var(--dur-fast), color var(--dur-fast);
+}
+
+body.about-open .about-circle__close {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease 0.6s, visibility 0s;
 }
 .about-circle__close svg {
   width: 12px;
@@ -1065,6 +1112,309 @@ body.detail-open .contact-curtain-wrap {
 .reveal:nth-child(2) { transition-delay: 80ms;  }
 .reveal:nth-child(3) { transition-delay: 160ms; }
 .reveal:nth-child(4) { transition-delay: 240ms; }
+
+/* --------------------------------------------------------------------------
+   ORGANIZATION TIMELINE (Horizontal Scroll)
+   -------------------------------------------------------------------------- */
+.org-scroll-wrapper {
+  display: block;
+  height: 400vh; 
+  position: relative;
+  background-color: #0c0c0c;
+  z-index: 10; 
+}
+
+.org-sticky-container {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.section--org {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0c0c0c;
+  color: #fff;
+  border-radius: 0;
+  padding: 15vh 5vw 0;
+  margin-top: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.section--org .section__inner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 100%;
+}
+
+.section--org .section__header {
+  flex-shrink: 0;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.section--org .section__title {
+  color: #fff;
+}
+
+.section--org .section__kicker {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.timeline-container {
+  width: 100%;
+  overflow: visible;
+  padding-bottom: 2rem;
+  margin-top: 0;
+}
+
+.timeline-track {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+  min-width: max-content;
+  padding: 1rem 0;
+  will-change: transform;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timeline-line {
+  position: absolute;
+  top: 3.5rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 1;
+}
+
+.timeline-item {
+  width: 320px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.timeline-item__year {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.25rem;
+}
+
+.timeline-item__node {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  position: relative;
+  box-shadow: 0 0 0 4px #0c0c0c, 0 0 0 5px rgba(255,255,255,0.2);
+}
+
+.timeline-item__content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
+  transition: background 0.3s ease;
+  flex-grow: 1;
+}
+
+.timeline-item:hover .timeline-item__content {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.timeline-item__index {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.timeline-item__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL HEADER (Language & Menu Toggle)
+   -------------------------------------------------------------------------- */
+.global-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 4vw;
+  z-index: 1000;
+  pointer-events: none;
+  transition: opacity var(--dur-mid) var(--ease-expo), visibility 0s;
+}
+
+body.about-open .global-header {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-mid) var(--ease-expo), visibility 0s var(--dur-mid);
+}
+
+.global-header button {
+  pointer-events: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: color var(--dur-mid) var(--ease-expo);
+}
+
+body.menu-open .global-header button {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   FULLSCREEN MENU
+   -------------------------------------------------------------------------- */
+.fullscreen-menu {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  color: #fff;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5rem 10vw;
+}
+
+.fullscreen-menu__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  height: 100%;
+  justify-content: center;
+}
+
+.fullscreen-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.fullscreen-menu__link {
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color var(--dur-mid) var(--ease-expo),
+              transform var(--dur-mid) var(--ease-expo);
+  display: block;
+}
+
+.fullscreen-menu__link:hover {
+  color: #fff;
+  transform: translateX(-15px);
+}
+
+.fullscreen-menu__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.fullscreen-menu__footer a {
+  display: block;
+  margin-top: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 2px;
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+
+.fullscreen-menu__footer a:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.fullscreen-menu__theme-toggle p {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  transition: color var(--dur-fast);
+}
+
+.fullscreen-menu__theme-toggle p:hover,
+.fullscreen-menu__theme-toggle p.is-active {
+  color: #fff;
+}
+
+.active-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   PAGE WRAPPER (3D ROTATION)
+   -------------------------------------------------------------------------- */
+.page-wrapper {
+  background-color: var(--bg);
+  position: relative;
+  z-index: 10;
+  transition: transform 0.85s cubic-bezier(0.7, 0, 0.2, 1),
+              border-radius 0.85s cubic-bezier(0.7, 0, 0.2, 1),
+              box-shadow 0.85s cubic-bezier(0.7, 0, 0.2, 1);
+  transform-origin: top left;
+  will-change: transform, border-radius;
+  min-height: 100vh;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+body.menu-open .page-wrapper {
+  transform: translate(-50vw, 15vh) rotate(-20deg)  scale(0.7);
+  border-radius: 20px;
+  box-shadow: 0 0 80px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
 
 /* --------------------------------------------------------------------------
    12. PAGE LOAD ANIMATION
