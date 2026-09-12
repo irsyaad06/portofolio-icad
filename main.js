@@ -64,6 +64,10 @@
       title:    'Enterprise\nMicroservices',
       description:
         'A fully distributed backend system built to serve millions of daily active users across multiple regions. The architecture uses an event-driven approach with message queues, circuit breakers, and distributed tracing for complete observability.\n\nKey challenges included zero-downtime deployments, consistent data across services, and building an internal SDK to standardise service communication.',
+      images: [
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Enterprise+Preview+1',
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Enterprise+Preview+2'
+      ],
       tags:  ['Laravel', 'Vue.js','React.js','Next.js', 'Docker', 'Redis', 'RabbitMQ', 'MySQL', 'Nginx'],
       link:  '#',
     },
@@ -75,6 +79,10 @@
       title:    'IoT Dashboard\nSystem',
       description:
         'A real-time industrial monitoring and control platform connecting hundreds of ESP32-based sensors via MQTT to a central dashboard. Features live data streams, configurable alert thresholds, device grouping, and a predictive-maintenance module.\n\nThe frontend renders thousands of data points per minute using canvas-based charting without dropping frames.',
+      images: [
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=IoT+Preview+1',
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=IoT+Preview+2'
+      ],
       tags:  ['ESP32', 'MQTT', 'Vue.js', 'Chart.js', 'Node.js', 'WebSockets', 'InfluxDB'],
       link:  '#',
     },
@@ -86,6 +94,10 @@
       title:    'Admin Panel\nSuite',
       description:
         'A multi-tenant back-office management system built on the Laravel Filament ecosystem. Includes a granular RBAC module, a full audit-log trail for compliance, customisable data-export pipelines, and a plugin-based report builder.\n\nDesigned for non-technical operators — every complex workflow reduced to a single guided form.',
+      images: [
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Admin+Preview+1',
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Admin+Preview+2'
+      ],
       tags:  ['Laravel Filament', 'Livewire', 'Tailwind CSS', 'MySQL', 'Spatie Permissions'],
       link:  '#',
     },
@@ -97,6 +109,10 @@
       title:    'E-Commerce\nPlatform',
       description:
         'A headless storefront built with Next.js consuming the Shopify Storefront API. Achieves sub-800ms LCP via aggressive edge caching, incremental static regeneration, and image optimisation at the CDN layer.\n\nCustom checkout flow, loyalty-points UI, and an integrated order-management dashboard for the operations team.',
+      images: [
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Ecommerce+Preview+1',
+        'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Ecommerce+Preview+2'
+      ],
       tags:  ['Next.js', 'TypeScript', 'Shopify API', 'Vercel', 'TailwindCSS', 'SWR'],
       link:  '#',
     },
@@ -179,10 +195,12 @@
   /* =========================================================================
      4. PROJECT DETAIL PANEL
   ========================================================================= */
-  const detailPanel   = document.getElementById('detail-panel');
-  const detailContent = document.getElementById('detail-content');
-  const closeBtn      = document.getElementById('detail-close');
-  const cards         = document.querySelectorAll('.card[data-project]');
+  const detailPanel         = document.getElementById('detail-panel');
+  const detailContent       = document.getElementById('detail-content');
+  const detailImagesOverlay = document.getElementById('detail-images-overlay');
+  const detailImagesContent = document.getElementById('detail-images-content');
+  const closeBtn            = document.getElementById('detail-close');
+  const cards               = document.querySelectorAll('.card[data-project]');
 
   /** Build detail panel HTML from project data */
   function buildDetailHTML(project) {
@@ -231,20 +249,29 @@
     const project = PROJECTS[projectKey];
     if (!project) return;
 
+    // Populate images overlay
+    const imagesHtml = (project.images || []).map(img => `<img src="${img}" alt="${project.title.replace('\n', ' ')} Image" class="detail__image-left">`).join('');
+    detailImagesContent.innerHTML = imagesHtml;
+
     // Populate content BEFORE showing (prevents flash)
     detailContent.innerHTML = buildDetailHTML(project);
+    
     detailPanel.removeAttribute('hidden');
-    // Ensure we start at the top of the panel (Bug fix applied)
+    detailImagesOverlay.removeAttribute('hidden');
+    
+    // Ensure we start at the top
     detailPanel.scrollTop = 0;
+    detailImagesOverlay.scrollTop = 0;
 
     // Trigger transition on next frame
     requestAnimationFrame(() => {
       document.body.classList.add('detail-open');
       detailPanel.setAttribute('aria-hidden', 'false');
+      detailImagesOverlay.setAttribute('aria-hidden', 'false');
       closeBtn.focus();
     });
 
-    // Lock body scroll so user doesn't scroll the background page while reading details
+    // Lock body scroll
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
   }
@@ -253,10 +280,12 @@
   function closeDetail() {
     document.body.classList.remove('detail-open');
     detailPanel.setAttribute('aria-hidden', 'true');
+    detailImagesOverlay.setAttribute('aria-hidden', 'true');
 
     // Wait for transition, then truly hide
     detailPanel.addEventListener('transitionend', function onEnd() {
       detailPanel.setAttribute('hidden', '');
+      detailImagesOverlay.setAttribute('hidden', '');
       detailPanel.removeEventListener('transitionend', onEnd);
     }, { once: true });
 
