@@ -17,7 +17,7 @@
   const menuToggle = document.getElementById('menu-toggle');
   const menuText = document.getElementById('menu-toggle-text');
   const menuLinks = document.querySelectorAll('.fullscreen-menu__link');
-  let currentLang = 'ID';
+  let currentLang = 'EN';
 
   const i18n = {
     EN: {
@@ -110,7 +110,8 @@
 
   langSwitch.addEventListener('click', () => {
     currentLang = currentLang === 'EN' ? 'ID' : 'EN';
-    langSwitch.textContent = currentLang === 'EN' ? 'ID' : 'EN'; 
+    const langText = document.getElementById('lang-text');
+    if (langText) langText.textContent = currentLang; 
     
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -312,7 +313,10 @@
   // We are tracking the window scroll now.
   const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) setActive(entry.target.id);
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'hero' && window.scrollY > window.innerHeight * 0.5) return;
+        setActive(entry.target.id);
+      }
     });
   }, {
     root:       null, // viewport

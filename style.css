@@ -1323,6 +1323,7 @@ body.detail-open .contact-curtain-wrap {
 }
 
 body.about-open .global-header,
+body.detail-open .global-header,
 body.not-on-hero .menu-toggle {
   opacity: 0;
   visibility: hidden;
@@ -1340,7 +1341,16 @@ body.not-on-hero .menu-toggle {
   transition: color var(--dur-mid) var(--ease-expo), opacity var(--dur-mid) var(--ease-expo), visibility 0s;
 }
 
-body.menu-open .global-header button {
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--bg);
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+}
+
+body.menu-open .global-header .menu-toggle {
   color: #fff;
 }
 
