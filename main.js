@@ -388,17 +388,32 @@
         link.addEventListener('click', e => {
             e.preventDefault();
             const id = link.getAttribute('href').replace('#', '');
+            const isMenuLink = link.classList.contains('fullscreen-menu__link');
 
-            // Because #hero is position: sticky, scrollIntoView() thinks it's 
-            // already in view. We must manually scroll to the absolute top.
-            if (id === 'hero') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
+            const doScroll = () => {
+                // Because #hero is position: sticky, scrollIntoView() thinks it's
+                // already in view. We must manually scroll to the absolute top.
+                if (id === 'hero') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
 
-            const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const el = document.getElementById(id);
+                if (el) {
+                    // Use getBoundingClientRect + scrollY for precise absolute position,
+                    // avoiding scrollIntoView inaccuracies with sticky/fixed elements.
+                    const top = el.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            };
+
+            if (isMenuLink) {
+                // Defer scroll to next task so the browser can process the
+                // menu-close style changes (removing overflow:hidden) before
+                // attempting to scroll — otherwise the scroll is silently ignored.
+                setTimeout(doScroll, 0);
+            } else {
+                doScroll();
             }
         });
     });

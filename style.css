@@ -184,8 +184,8 @@ button {
    4. CONTENT AREA — Middle scrollable column
    -------------------------------------------------------------------------- */
 .content {
-    width: var(--content-w);
-    flex-shrink: 0;
+    flex: 1;          /* fill all space left after the scroller */
+    min-width: 0;     /* allow flex item to shrink below its content size */
     background-color: var(--bg);
     position: relative;
     z-index: 10;
@@ -662,16 +662,23 @@ body.about-open .about-circle__content {
    7. PORTFOLIO CARDS
    -------------------------------------------------------------------------- */
 .work-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-top: 1px solid var(--border-strong);
 }
 
-.card:last-child {
+.card {
     border-bottom: 1px solid var(--border-strong);
+}
+
+/* Column separator — right border on every left-column card */
+.card:nth-child(odd) {
+    border-right: 1px solid var(--border-strong);
+    padding-right: 2.5rem;
+}
+
+.card:nth-child(even) {
+    padding-left: 2.5rem;
 }
 
 .card__link {
@@ -939,14 +946,7 @@ body.about-open .about-circle__content {
    9. RIGHT COLUMN WRAPPER — sticky typographic panel
    -------------------------------------------------------------------------- */
 .right-col {
-    width: var(--right-col-w);
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    flex-shrink: 0;
-    overflow: hidden;
-    background-color: var(--bg);
-    /* The visual panel stays here while left content scrolls past */
+    display: none;  /* hidden on desktop — content takes full remaining width */
 }
 
 .visual {
@@ -1512,6 +1512,14 @@ body.on-org .global-header .menu-toggle {
     color: #fff;
 }
 
+body.detail-open .global-header .menu-toggle {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--dur-mid) var(--ease-expo),
+        visibility 0s var(--dur-mid);
+}
+
 /* --------------------------------------------------------------------------
    FULLSCREEN MENU
    -------------------------------------------------------------------------- */
@@ -1667,6 +1675,7 @@ body.menu-open .page-wrapper {
 
     /* Right col is no longer sticky, it just stacks inline as a banner */
     .right-col {
+        display: block;   /* restore visibility on mobile */
         position: relative;
         width: 100%;
         height: auto;
@@ -1722,6 +1731,24 @@ body.menu-open .page-wrapper {
 
     .detail-panel__inner {
         padding: 6rem 1.5rem 4rem;
+    }
+
+    /* Works grid: single column on mobile */
+    .work-list {
+        grid-template-columns: 1fr;
+        border-top: none;
+    }
+
+    .card {
+        border-top: 1px solid var(--border-strong);
+        border-bottom: none;
+        border-right: none !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .card:last-child {
+        border-bottom: 1px solid var(--border-strong);
     }
 
     /* Responsive for menu open rotation */
