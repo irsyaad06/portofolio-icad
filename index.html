@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
@@ -21,6 +21,30 @@
 </head>
 
 <body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Copy email toast -->
+  <div class="copy-toast" id="copy-toast" aria-live="polite">EMAIL COPIED</div>
+
+  <!-- Keyboard hint -->
+  <div class="kb-hint" id="kb-hint" aria-hidden="true">
+    <span><kbd>1-4</kbd> Navigate</span>
+    <span><kbd>M</kbd> Menu</span>
+    <span><kbd>ESC</kbd> Close</span>
+  </div>
+
+  <!-- Card image preview -->
+  <div class="card-preview" id="card-preview" aria-hidden="true">
+    <img id="card-preview-img" src="" alt="">
+  </div>
 
   <!-- =====================================================
        GLOBAL HEADER (Language & Menu)
@@ -53,9 +77,9 @@
       </ul>
       <div class="fullscreen-menu__footer">
         <div class="fullscreen-menu__theme-toggle">
-          <p class="is-active">LIGHT <span class="active-dot"></span></p>
-          <p>DARK</p>
-          <p>SYSTEM</p>
+          <p class="is-active" data-theme-btn="light">LIGHT <span class="active-dot"></span></p>
+          <p data-theme-btn="dark">DARK</p>
+          <p data-theme-btn="system">SYSTEM</p>
         </div>
         <div class="fullscreen-menu__legal">
           <a href="#">PRIVACY POLICY</a>
@@ -97,6 +121,11 @@
           </a>
         </div>
 
+        <div class="hero__availability" aria-label="Availability status">
+          <span class="hero__availability-dot" aria-hidden="true"></span>
+          <span data-i18n-avail="available">Available for work</span>
+        </div>
+
         <div class="hero__scroll-indicator">
 
           <div class="hero__scroll-line"></div>
@@ -128,7 +157,7 @@
           <div class="section__inner">
             <header class="section__header">
               <span class="section__kicker" data-i18n="work_kicker">02 / PORTFOLIO</span>
-              <h2 class="section__title" data-i18n="work_title">Selected<br>Works.</h2>
+              <h2 class="section__title" data-i18n="work_title" data-scramble>Selected<br>Works.</h2>
             </header>
 
             <div class="work-list" role="list">
@@ -273,7 +302,7 @@
           <div class="section__inner">
             <header class="section__header">
               <span class="section__kicker" id="org-kicker" data-i18n="org_kicker">03 / EXPERIENCE</span>
-              <h2 class="section__title" id="org-title" data-i18n="org_title">Organisasi &<br>Peran.</h2>
+              <h2 class="section__title" id="org-title" data-i18n="org_title" data-scramble>Organisasi &<br>Peran.</h2>
             </header>
 
             <div class="timeline-container">
@@ -427,7 +456,7 @@
                 style="--i:8">g</span><span style="--i:9">.</span></span></h2>
 
           <div class="contact-full__links">
-            <a href="mailto:irsyaadfatahilah@gmail.com" class="contact-full__link"
+            <a href="mailto:irsyaadfatahilah@gmail.com" class="contact-full__link" data-copy-email
               aria-label="Email Irsyaad">irsyaadfatahilah@gmail.com</a>
 
             <div class="contact-full__socials">

@@ -576,15 +576,293 @@
                 let progress = scrolled / scrollableDistance;
                 progress = Math.max(0, Math.min(1, progress));
 
-                const maxTranslate = Math.max(0, orgTrack.scrollWidth - window.innerWidth * 0.5);
+                // 0.90 = viewport width minus 5vw on each side (matches section padding)
+                const maxTranslate = Math.max(0, orgTrack.scrollWidth - window.innerWidth * 0.90);
                 orgTrack.style.transform = `translate3d(-${progress * maxTranslate}px, 0, 0)`;
             } else if (rect.top > 0) {
                 orgTrack.style.transform = `translate3d(0px, 0, 0)`;
             } else if (rect.bottom < viewportHeight) {
-                const maxTranslate = Math.max(0, orgTrack.scrollWidth - window.innerWidth * 0.5);
+                const maxTranslate = Math.max(0, orgTrack.scrollWidth - window.innerWidth * 0.90);
                 orgTrack.style.transform = `translate3d(-${maxTranslate}px, 0, 0)`;
             }
         }, { passive: true });
     }
+
+    /* =========================================================================
+       DARK MODE TOGGLE
+    ========================================================================= */
+    const themeBtns = document.querySelectorAll('[data-theme-btn]');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+        let resolved = theme;
+        if (theme === 'system') {
+            resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        htmlEl.setAttribute('data-theme', resolved);
+        localStorage.setItem('portfolio-theme', theme);
+
+        // Update active dot in menu
+        themeBtns.forEach(btn => {
+            const isActive = btn.getAttribute('data-theme-btn') === theme;
+            btn.classList.toggle('is-active', isActive);
+            // Move the active-dot span to the active button
+            const existingDot = btn.querySelector('.active-dot');
+            if (!isActive && existingDot) existingDot.remove();
+            if (isActive && !existingDot) {
+                const dot = document.createElement('span');
+                dot.className = 'active-dot';
+                btn.appendChild(dot);
+            }
+        });
+    }
+
+    // Load saved preference
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    applyTheme(savedTheme);
+
+    themeBtns.forEach(btn => {
+        btn.addEventListener('click', () => applyTheme(btn.getAttribute('data-theme-btn')));
+    });
+
+    // React to system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if (localStorage.getItem('portfolio-theme') === 'system') applyTheme('system');
+    });
+
+    /* =========================================================================
+       CUSTOM CURSOR
+    ========================================================================= */
+    const cursorEl = document.getElementById('cursor');
+    if (cursorEl && window.matchMedia('(hover: hover)').matches) {
+        const dot  = cursorEl.querySelector('.cursor__dot');
+        const ring = cursorEl.querySelector('.cursor__ring');
+
+        let mouseX = -100, mouseY = -100;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorEl.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        // Hover state — expand ring over interactive elements
+        const interactives = 'a, button, [role="button"], .card__link, .fullscreen-menu__link, label, input, textarea, select';
+        document.addEventListener('mouseover', e => {
+            if (e.target.closest(interactives)) document.body.classList.add('cursor-hover');
+        });
+        document.addEventListener('mouseout', e => {
+            if (e.target.closest(interactives)) document.body.classList.remove('cursor-hover');
+        });
+
+        // Click flash
+        document.addEventListener('mousedown', () => {
+            document.body.classList.add('cursor-click');
+        });
+        document.addEventListener('mouseup', () => {
+            document.body.classList.remove('cursor-click');
+        });
+    }
+
+    /* =========================================================================
+       SCROLL PROGRESS BAR
+    ========================================================================= */
+    const progressBar = document.getElementById('scroll-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const docH   = document.documentElement.scrollHeight - window.innerHeight;
+            const pct    = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+            progressBar.style.width = pct + '%';
+        }, { passive: true });
+    }
+
+    /* =========================================================================
+       AVAILABILITY BADGE — bilingual support
+    ========================================================================= */
+    const availSpan = document.querySelector('[data-i18n-avail]');
+    if (availSpan) {
+        const availText = { EN: 'Available for work', ID: 'Tersedia untuk proyek' };
+        // Patch applyTranslations to also update availability text
+        const _origApply = window.__applyTranslations;
+        function updateAvail(lang) {
+            availSpan.textContent = availText[lang] || availText['EN'];
+        }
+        // Initial call
+        updateAvail(currentLang);
+        // Watch lang switch
+        document.getElementById('lang-switch').addEventListener('click', () => {
+            // currentLang already toggled by earlier listener, read html
+            const lang = htmlEl.lang === 'en' ? 'EN' : 'ID';
+            // Use a tiny delay to read after the other listener fires
+            setTimeout(() => updateAvail(currentLang), 0);
+        });
+    }
+
+    /* =========================================================================
+       TEXT SCRAMBLE on section titles
+    ========================================================================= */
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '!<>—_\\/[]{}=+*^?#0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            this.update = this.update.bind(this);
+        }
+        setText(newText) {
+            const len = newText.length;
+            this.queue = [];
+            for (let i = 0; i < len; i++) {
+                const to    = newText[i];
+                const start = Math.floor(Math.random() * 18);
+                const end   = start + Math.floor(Math.random() * 18) + 6;
+                this.queue.push({ to, start, end, char: '' });
+            }
+            cancelAnimationFrame(this.raf);
+            this.frame = 0;
+            this.update();
+        }
+        randomChar() {
+            return this.chars[Math.floor(Math.random() * this.chars.length)];
+        }
+        update() {
+            let out = '';
+            let done = 0;
+            for (let i = 0; i < this.queue.length; i++) {
+                const { to, start, end } = this.queue[i];
+                // Convert newline chars to <br> so h2 line-breaks survive innerHTML
+                const toHtml = to === '\n' ? '<br>' : to;
+                if (this.frame >= end) {
+                    done++;
+                    out += toHtml;
+                } else if (this.frame >= start) {
+                    if (!this.queue[i].char || Math.random() < 0.28) {
+                        this.queue[i].char = this.randomChar();
+                    }
+                    out += to === '\n' ? '<br>' : (to === ' ' ? ' ' : `<span style="opacity:0.45">${this.queue[i].char}</span>`);
+                } else {
+                    out += toHtml;
+                }
+            }
+            this.el.innerHTML = out;
+            if (done < this.queue.length) {
+                this.raf = requestAnimationFrame(this.update);
+                this.frame++;
+            }
+        }
+    }
+
+    // Attach scramble to elements with [data-scramble] on first intersection
+    document.querySelectorAll('[data-scramble]').forEach(el => {
+        const plainText = el.innerText;
+        const scrambler = new TextScramble(el);
+        let played = false;
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !played) {
+                    played = true;
+                    scrambler.setText(plainText);
+                    obs.unobserve(el);
+                }
+            });
+        }, { threshold: 0.4 });
+        obs.observe(el);
+    });
+
+    /* =========================================================================
+       CARD IMAGE PREVIEW (follows cursor)
+    ========================================================================= */
+    const cardPreview    = document.getElementById('card-preview');
+    const cardPreviewImg = document.getElementById('card-preview-img');
+
+    // Map project key → first image (reuse PROJECTS data)
+    if (cardPreview && cardPreviewImg) {
+        let previewRaf;
+
+        document.querySelectorAll('.card[data-project]').forEach(card => {
+            const key     = card.getAttribute('data-project');
+            const project = PROJECTS[key];
+            if (!project || !project.images || !project.images[0]) return;
+
+            const imgSrc = project.images[0];
+
+            card.addEventListener('mouseenter', () => {
+                cardPreviewImg.src = imgSrc;
+                cardPreview.classList.add('is-visible');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                cardPreview.classList.remove('is-visible');
+            });
+
+            card.addEventListener('mousemove', e => {
+                cancelAnimationFrame(previewRaf);
+                previewRaf = requestAnimationFrame(() => {
+                    cardPreview.style.left = e.clientX + 'px';
+                    cardPreview.style.top  = e.clientY + 'px';
+                });
+            });
+        });
+    }
+
+    /* =========================================================================
+       COPY EMAIL TO CLIPBOARD
+    ========================================================================= */
+    const copyEmailLink = document.querySelector('[data-copy-email]');
+    const copyToast     = document.getElementById('copy-toast');
+
+    if (copyEmailLink && copyToast) {
+        copyEmailLink.addEventListener('click', e => {
+            e.preventDefault();
+            const email = copyEmailLink.href.replace('mailto:', '');
+            navigator.clipboard.writeText(email).then(() => {
+                copyToast.classList.add('is-visible');
+                setTimeout(() => copyToast.classList.remove('is-visible'), 2200);
+            }).catch(() => {
+                // Fallback: open mailto normally
+                window.location.href = copyEmailLink.href;
+            });
+        });
+    }
+
+    /* =========================================================================
+       KEYBOARD NAVIGATION
+    ========================================================================= */
+    const sectionIds = ['hero', 'work', 'organization', 'contact'];
+
+    document.addEventListener('keydown', e => {
+        // Don't fire if user is typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        const key = e.key;
+
+        // 1-4: jump to section
+        const num = parseInt(key);
+        if (num >= 1 && num <= 4) {
+            const id = sectionIds[num - 1];
+            if (id === 'hero') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                const target = document.getElementById(id);
+                if (target) {
+                    const top = target.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            }
+            return;
+        }
+
+        // M: toggle menu (only if no other panel is open)
+        if (key === 'm' || key === 'M') {
+            if (!document.body.classList.contains('detail-open') &&
+                !document.body.classList.contains('about-open')) {
+                document.getElementById('menu-toggle').click();
+            }
+            return;
+        }
+    });
+
+    /* =========================================================================
+       KEYBOARD HINT — static on landing, hidden when scrolled past hero
+       (visibility is driven by CSS: body.not-on-hero .kb-hint { opacity: 0 })
+    ========================================================================= */
 
 })();
