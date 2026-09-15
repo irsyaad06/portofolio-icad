@@ -681,7 +681,7 @@
     ========================================================================= */
     const availSpan = document.querySelector('[data-i18n-avail]');
     if (availSpan) {
-        const availText = { EN: 'Available for work', ID: 'Tersedia untuk proyek' };
+        const availText = { EN: 'I EXIST BECAUSE I CREATE', ID: 'AKU ADA KARNA AKU BERKARYA' };
         // Patch applyTranslations to also update availability text
         const _origApply = window.__applyTranslations;
         function updateAvail(lang) {

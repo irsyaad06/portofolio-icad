@@ -49,13 +49,15 @@ html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
     overflow-x: hidden;
-    background-color: var(--bg); /* prevents any dark bleed at viewport edges */
+    background-color: var(--bg);
+    /* prevents any dark bleed at viewport edges */
     /* Moved from body to prevent sticky container bugs */
 }
 
 body {
     width: 100%;
-    background-color: var(--bg); /* menu reveal black is handled by .fullscreen-menu */
+    background-color: var(--bg);
+    /* menu reveal black is handled by .fullscreen-menu */
     color: var(--text);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -184,8 +186,10 @@ button {
    4. CONTENT AREA — Middle scrollable column
    -------------------------------------------------------------------------- */
 .content {
-    flex: 1;          /* fill all space left after the scroller */
-    min-width: 0;     /* allow flex item to shrink below its content size */
+    flex: 1;
+    /* fill all space left after the scroller */
+    min-width: 0;
+    /* allow flex item to shrink below its content size */
     background-color: var(--bg);
     position: relative;
     z-index: 10;
@@ -949,7 +953,8 @@ body.about-open .about-circle__content {
    9. RIGHT COLUMN WRAPPER — sticky typographic panel
    -------------------------------------------------------------------------- */
 .right-col {
-    display: none;  /* hidden on desktop — content takes full remaining width */
+    display: none;
+    /* hidden on desktop — content takes full remaining width */
 }
 
 .visual {
@@ -1686,7 +1691,8 @@ body.menu-open .page-wrapper {
 
     /* Right col is no longer sticky, it just stacks inline as a banner */
     .right-col {
-        display: block;   /* restore visibility on mobile */
+        display: block;
+        /* restore visibility on mobile */
         position: relative;
         width: 100%;
         height: auto;
@@ -1765,6 +1771,14 @@ body.menu-open .page-wrapper {
     /* Responsive for menu open rotation */
     body.menu-open .page-wrapper {
         transform: translate(-75vw, 5vh) rotate(-5deg) scale(0.85);
+    }
+
+    .fullscreen-menu {
+        padding: 5rem 5vw;
+    }
+
+    .fullscreen-menu__link {
+        font-size: clamp(2rem, 5vw, 2rem);
     }
 }
 
@@ -1867,8 +1881,13 @@ body.about-open .cursor__ring {
 
 /* Hide on mobile / touch */
 @media (hover: none) {
-    .cursor { display: none; }
-    body { cursor: auto; }
+    .cursor {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
 }
 
 /* ==========================================================================
@@ -1907,9 +1926,20 @@ body.about-open .cursor__ring {
 }
 
 @keyframes avail-pulse {
-    0%   { transform: scale(1);   opacity: 0.7; }
-    70%  { transform: scale(2.8); opacity: 0;   }
-    100% { transform: scale(2.8); opacity: 0;   }
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    70% {
+        transform: scale(2.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(2.8);
+        opacity: 0;
+    }
 }
 
 /* ==========================================================================
@@ -1987,7 +2017,8 @@ body.about-open .cursor__ring {
     text-transform: uppercase;
     color: var(--text-muted);
     pointer-events: none;
-    opacity: 1;                  /* always visible on landing */
+    opacity: 1;
+    /* always visible on landing */
     transition: opacity 0.5s var(--ease-expo);
     z-index: 900;
     display: flex;
@@ -2018,6 +2049,12 @@ body.not-on-hero .kb-hint {
 
 .kb-hint.is-visible {
     opacity: 1;
+}
+
+@media (max-width: 860px) {
+    .kb-hint {
+        display: none;
+    }
 }
 
 /* ==========================================================================
