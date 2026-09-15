@@ -1538,10 +1538,12 @@ body.detail-open .global-header .menu-toggle {
     padding: 5rem 10vw;
     /* Hidden by default — prevents black from bleeding into the landing page */
     visibility: hidden;
+    transition: visibility 0s 0.85s;
 }
 
 body.menu-open .fullscreen-menu {
     visibility: visible;
+    transition: visibility 0s 0s;
 }
 
 .fullscreen-menu__inner {
