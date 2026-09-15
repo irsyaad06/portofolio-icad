@@ -35,19 +35,19 @@
             work_title: 'Selected<br>Works.',
             card_btn: 'View Detail',
             card1_title: 'Go Turtles',
-            card1_desc: 'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
-            card2_title: 'IoT Dashboard<br>System',
-            card2_desc: 'Real-time industrial monitoring platform with live data streams, alert management, and predictive analytics.',
-            card3_title: 'Admin Panel<br>Suite',
-            card3_desc: 'Fully customised back-office system built on Filament with role-based access, audit logs, and reporting.',
-            card4_title: 'E-Commerce<br>Platform',
-            card4_desc: 'High-performance headless storefront with sub-second load times and an integrated order management system.',
-            visual_tagline: 'I exist<br>because I create',
-            visual_meta1: 'Based in Bandung, Indonesia',
-            visual_meta2: 'Enjoy the experiences',
-            visual_meta3: 'peace out',
-            contact_wave: 'something.',
-            footer_copy: '\u00a9 2024 IRSYAAD. All rights reserved.',
+      card1_desc: 'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
+      card2_title: 'IoT Dashboard<br>System',
+      card2_desc: 'Real-time industrial monitoring platform with live data streams, alert management, and predictive analytics.',
+      card3_title: 'Admin Panel<br>Suite',
+      card3_desc: 'Fully customised back-office system built on Filament with role-based access, audit logs, and reporting.',
+      card4_title: 'E-Commerce<br>Platform',
+      card4_desc: 'High-performance headless storefront with sub-second load times and an integrated order management system.',
+      visual_tagline: 'I exist<br>because I create',
+      visual_meta1: 'Based in Bandung, Indonesia',
+      visual_meta2: 'Enjoy the experiences',
+      visual_meta3: 'peace out',
+      contact_wave: 'something.',
+      footer_copy: '\u00a9 2024 IRSYAAD. All rights reserved.',
             contact_title: 'Let\'s build<br>',
             about_btn_close: 'Back',
             about_label: 'About me',
@@ -91,19 +91,19 @@
             work_title: 'Karya<br>Pilihan.',
             card_btn: 'Lihat Detail',
             card1_title: 'Go Turtles',
-            card1_desc: 'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
-            card2_title: 'Dasbor IoT<br>Industri',
-            card2_desc: 'Platform pemantauan industri real-time yang menghubungkan ratusan sensor ESP32 via MQTT ke dasbor terpusat.',
-            card3_title: 'Admin Panel<br>Suite',
-            card3_desc: 'Sistem back-office multi-tenant berbasis Laravel Filament dengan modul RBAC, audit log, dan pembuat laporan.',
-            card4_title: 'Platform<br>E-Commerce',
-            card4_desc: 'Storefront headless berbasis Next.js yang mencapai LCP sub-800ms via edge caching dan optimasi gambar CDN.',
-            visual_tagline: 'Aku ada<br>karena aku berkarya',
-            visual_meta1: 'Berbasis di Bandung, Indonesia',
-            visual_meta2: 'Nikmati pengalamannya',
-            visual_meta3: 'salam sejahtera',
-            contact_wave: 'sesuatu.',
-            footer_copy: '\u00a9 2024 IRSYAAD. Hak cipta dilindungi.',
+      card1_desc: 'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
+      card2_title: 'Dasbor IoT<br>Industri',
+      card2_desc: 'Platform pemantauan industri real-time yang menghubungkan ratusan sensor ESP32 via MQTT ke dasbor terpusat.',
+      card3_title: 'Admin Panel<br>Suite',
+      card3_desc: 'Sistem back-office multi-tenant berbasis Laravel Filament dengan modul RBAC, audit log, dan pembuat laporan.',
+      card4_title: 'Platform<br>E-Commerce',
+      card4_desc: 'Storefront headless berbasis Next.js yang mencapai LCP sub-800ms via edge caching dan optimasi gambar CDN.',
+      visual_tagline: 'Aku ada<br>karena aku berkarya',
+      visual_meta1: 'Berbasis di Bandung, Indonesia',
+      visual_meta2: 'Nikmati pengalamannya',
+      visual_meta3: 'salam sejahtera',
+      contact_wave: 'sesuatu.',
+      footer_copy: '\u00a9 2024 IRSYAAD. Hak cipta dilindungi.',
             contact_title: 'Mari bangun<br>',
             about_btn_close: 'Kembali',
             about_label: 'Tentang saya',
@@ -134,35 +134,35 @@
         }
     };
 
-    function applyTranslations(lang) {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
-        });
-        // Rebuild animated wave letters for contact section
-        const waveEl = document.getElementById('contact-wave');
-        const waveKey = i18n[lang]['contact_wave'] || 'something.';
-        if (waveEl) {
-            waveEl.innerHTML = waveKey.split('').map((ch, i) =>
-                `<span style="--i:${i}">${ch}</span>`
-            ).join('');
-        }
-        const langText = document.getElementById('lang-text');
-        if (langText) langText.textContent = lang;
-        if (document.body.classList.contains('menu-open')) {
-            menuText.innerHTML = i18n[lang]['menu_btn_close'];
-        } else {
-            menuText.innerHTML = i18n[lang]['menu_btn'];
-        }
-    }
-
-    // Apply EN translations immediately on page load
-    applyTranslations(currentLang);
-
-    langSwitch.addEventListener('click', () => {
-        currentLang = currentLang === 'EN' ? 'ID' : 'EN';
-        applyTranslations(currentLang);
+  function applyTranslations(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
     });
+    // Rebuild animated wave letters for contact section
+    const waveEl = document.getElementById('contact-wave');
+    const waveKey = i18n[lang]['contact_wave'] || 'something.';
+    if (waveEl) {
+      waveEl.innerHTML = waveKey.split('').map((ch, i) =>
+        `<span style="--i:${i}">${ch}</span>`
+      ).join('');
+    }
+    const langText = document.getElementById('lang-text');
+    if (langText) langText.textContent = lang;
+    if (document.body.classList.contains('menu-open')) {
+      menuText.innerHTML = i18n[lang]['menu_btn_close'];
+    } else {
+      menuText.innerHTML = i18n[lang]['menu_btn'];
+    }
+  }
+
+  // Apply EN translations immediately on page load
+  applyTranslations(currentLang);
+
+  langSwitch.addEventListener('click', () => {
+    currentLang = currentLang === 'EN' ? 'ID' : 'EN';
+    applyTranslations(currentLang);
+  });
 
     menuToggle.addEventListener('click', () => {
         const isOpening = !document.body.classList.contains('menu-open');
@@ -268,16 +268,16 @@
     const PROJECTS = {
         enterprise: {
             index: '01',
-            year: '2024',
-            role: 'Full Stack Developer',
-            duration: '6 months',
-            title: 'Go Turtles',
+            year: '2025',
+            role: 'CEO & Full Stack Developer',
+            duration: '4 months',
+            title: 'GO-TURTLE',
             description:
-                'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
+                'GO-TURTLE is an integrated digital solution connecting community-based ecotourism with marine biodiversity conservation at Pangumbahan Beach, Sukabumi. It enables visitors to participate directly in sea turtle preservation programs, such as observing night-time egg-laying and hatchling releases.\n\nKey Features:\n• Conservation Ticketing & Tourism\n• Hatchling Population Tracker\n• Public Conservation Donation\n• Educational Blog & Travel Guide',
             images: [
-                
+                'assets/images/goturtles.png',
             ],
-            tags: ['Laravel', 'Vue.js', 'React.js', 'Next.js', 'Docker', 'Redis', 'RabbitMQ', 'MySQL', 'Nginx'],
+            tags: ['Laravel', 'React.js', 'Nest.js','Java Springboot', 'PostgreSQL', 'Nginx'],
             link: 'https://go-turtle.jabarprov.go.id/',
         },
         iot: {
@@ -348,7 +348,7 @@
         } else {
             document.body.classList.add('not-on-hero');
         }
-
+        
         if (id === 'organization') {
             document.body.classList.add('on-org');
         } else {
@@ -634,7 +634,7 @@
     ========================================================================= */
     const cursorEl = document.getElementById('cursor');
     if (cursorEl && window.matchMedia('(hover: hover)').matches) {
-        const dot = cursorEl.querySelector('.cursor__dot');
+        const dot  = cursorEl.querySelector('.cursor__dot');
         const ring = cursorEl.querySelector('.cursor__ring');
 
         let mouseX = -100, mouseY = -100;
@@ -669,8 +669,8 @@
     const progressBar = document.getElementById('scroll-progress');
     if (progressBar) {
         window.addEventListener('scroll', () => {
-            const docH = document.documentElement.scrollHeight - window.innerHeight;
-            const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+            const docH   = document.documentElement.scrollHeight - window.innerHeight;
+            const pct    = docH > 0 ? (window.scrollY / docH) * 100 : 0;
             progressBar.style.width = pct + '%';
         }, { passive: true });
     }
@@ -710,9 +710,9 @@
             const len = newText.length;
             this.queue = [];
             for (let i = 0; i < len; i++) {
-                const to = newText[i];
+                const to    = newText[i];
                 const start = Math.floor(Math.random() * 18);
-                const end = start + Math.floor(Math.random() * 18) + 6;
+                const end   = start + Math.floor(Math.random() * 18) + 6;
                 this.queue.push({ to, start, end, char: '' });
             }
             cancelAnimationFrame(this.raf);
@@ -769,7 +769,7 @@
     /* =========================================================================
        CARD IMAGE PREVIEW (follows cursor)
     ========================================================================= */
-    const cardPreview = document.getElementById('card-preview');
+    const cardPreview    = document.getElementById('card-preview');
     const cardPreviewImg = document.getElementById('card-preview-img');
 
     // Map project key → first image (reuse PROJECTS data)
@@ -777,7 +777,7 @@
         let previewRaf;
 
         document.querySelectorAll('.card[data-project]').forEach(card => {
-            const key = card.getAttribute('data-project');
+            const key     = card.getAttribute('data-project');
             const project = PROJECTS[key];
             if (!project || !project.images || !project.images[0]) return;
 
@@ -796,7 +796,7 @@
                 cancelAnimationFrame(previewRaf);
                 previewRaf = requestAnimationFrame(() => {
                     cardPreview.style.left = e.clientX + 'px';
-                    cardPreview.style.top = e.clientY + 'px';
+                    cardPreview.style.top  = e.clientY + 'px';
                 });
             });
         });
@@ -806,7 +806,7 @@
        COPY EMAIL TO CLIPBOARD
     ========================================================================= */
     const copyEmailLink = document.querySelector('[data-copy-email]');
-    const copyToast = document.getElementById('copy-toast');
+    const copyToast     = document.getElementById('copy-toast');
 
     if (copyEmailLink && copyToast) {
         copyEmailLink.addEventListener('click', e => {
