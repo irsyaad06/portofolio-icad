@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IRSYAAD. — Creative Developer</title>
+  <meta name="description"
+    content="Portfolio of Irsyaad — crafting distinct digital experiences. Selected works in web development, IoT, and enterprise systems." />
+  <meta name="author" content="Irsyaad" />
+  <meta property="og:title" content="IRSYAAD. — Creative Developer" />
+  <meta property="og:description" content="Crafting distinct digital experiences. No filler." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- OG / Social preview -->
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="assets/images/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,700;0,14..32,900;1,14..32,300&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Copy email toast -->
+  <div class="copy-toast" id="copy-toast" aria-live="polite">EMAIL COPIED</div>
+
+  <!-- Keyboard hint -->
+  <div class="kb-hint" id="kb-hint" aria-hidden="true">
+    <span><kbd>1-4</kbd> Navigate</span>
+    <span><kbd>M</kbd> Menu</span>
+    <span><kbd>ESC</kbd> Close</span>
+  </div>
+
+  <!-- Card image preview -->
+  <div class="card-preview" id="card-preview" aria-hidden="true">
+    <img id="card-preview-img" src="" alt="">
+  </div>
+
+  <!-- =====================================================
+       GLOBAL HEADER (Language & Menu)
+  ====================================================== -->
+  <header class="global-header">
+    <button class="lang-switch" id="lang-switch" aria-label="Switch Language">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        <path d="M2 12h20"></path>
+      </svg>
+      <span id="lang-text">EN</span>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+      <span class="menu-toggle__text" id="menu-toggle-text">MENU</span>
+    </button>
+  </header>
+
+  <!-- =====================================================
+       FULLSCREEN MENU
+  ====================================================== -->
+  <nav class="fullscreen-menu" id="fullscreen-menu" aria-hidden="true">
+    <div class="fullscreen-menu__inner">
+      <ul class="fullscreen-menu__list">
+        <li><a href="index.html#hero" class="fullscreen-menu__link" data-menu-target="hero" data-i18n="menu_home">HOME</a></li>
+        <li><a href="index.html#work" class="fullscreen-menu__link" data-menu-target="work" data-i18n="menu_works">WORKS</a></li>
+        <li><a href="#organization" class="fullscreen-menu__link" data-menu-target="organization" data-i18n="menu_experience">EXPERIENCE</a></li>
+        <li><a href="index.html#contact" class="fullscreen-menu__link" data-menu-target="contact" data-i18n="menu_contact">CONTACT</a></li>
+      </ul>
+      <div class="fullscreen-menu__footer">
+        <div class="fullscreen-menu__theme-toggle">
+          <p class="is-active" data-theme-btn="light">LIGHT <span class="active-dot"></span></p>
+          <p data-theme-btn="dark">DARK</p>
+          <p data-theme-btn="system">SYSTEM</p>
+        </div>
+        <div class="fullscreen-menu__legal">
+          <a href="#">PRIVACY POLICY</a>
+          <a href="#">TERMS OF SERVICE</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       PAGE WRAPPER (For 3D Rotation Effect)
+  ====================================================== -->
+  <div class="page-wrapper" id="page-wrapper">
+
+    <!-- =====================================================
+       03 ORGANIZATIONAL EXPERIENCE (Full Page Horizontal Scroll)
+  ====================================================== -->
+    <section class="section section--org" id="organization" aria-label="Organizational Experience">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__kicker" id="org-kicker" data-i18n="org_kicker">03 / ORGANIZATION</span>
+          <h2 class="section__title" id="org-title" data-i18n="org_title" data-scramble>Organisasi &<br>Peran.</h2>
+        </header>
+
+        <div class="timeline-container">
+          <div class="timeline-track" id="org-track" role="list">
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-item__content">
+                <span class="timeline-item__index">01</span>
+                <div class="timeline-item__year">2025 - 2026</div>
+                <h3 class="timeline-item__title" id="org-1-title" data-i18n="org_1_title">Menteri Koordinator Teknologi &<br>Ekonomi Kreatif BEM Unikom</h3>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-item__content">
+                <span class="timeline-item__index">02</span>
+                <div class="timeline-item__year">2024 - 2025</div>
+                <h3 class="timeline-item__title" id="org-2-title" data-i18n="org_2_title">Ketua Umum Himpunan Mahasiswa<br>Teknik Informatika Unikom</h3>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-item__content">
+                <span class="timeline-item__index">03</span>
+                <div class="timeline-item__year">2022 - 2024</div>
+                <h3 class="timeline-item__title" id="org-3-title" data-i18n="org_3_title">Ketua Umum Remaja Masjid<br>Al-Muhajirin</h3>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-item__content">
+                <span class="timeline-item__index">04</span>
+                <div class="timeline-item__year">2020 - 2021</div>
+                <h3 class="timeline-item__title" id="org-4-title" data-i18n="org_4_title">Wakil Komandan PMR<br>SMKN 13 Bandung</h3>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-item__content">
+                <span class="timeline-item__index">05</span>
+                <div class="timeline-item__year">2018 - 2020</div>
+                <h3 class="timeline-item__title" id="org-5-title" data-i18n="org_5_title">Co-Founder + Ketua Umum<br>Aku Berkarya</h3>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+       03 CONTACT — Sticky curtain (sits behind split-layout)
+       As you scroll to the end of portfolio, contact reveals
+       from underneath like a curtain effect.
+  ====================================================== -->
+    <div class="contact-curtain-wrap">
+      <section id="contact" class="section section--contact-full" aria-label="Contact section">
+        <div class="contact-full__inner reveal">
+          <h2 class="contact-full__title"><span data-i18n="contact_title">Let's build<br></span><span
+              id="contact-wave" class="contact-full__wave"><span style="--i:0">s</span><span style="--i:1">o</span><span
+                style="--i:2">m</span><span style="--i:3">e</span><span style="--i:4">t</span><span
+                style="--i:5">h</span><span style="--i:6">i</span><span style="--i:7">n</span><span
+                style="--i:8">g</span><span style="--i:9">.</span></span></h2>
+
+          <div class="contact-full__links">
+            <a href="mailto:irsyaadfatahilah@gmail.com" class="contact-full__link" data-copy-email
+              aria-label="Email Irsyaad">irsyaadfatahilah@gmail.com</a>
+
+            <div class="contact-full__socials">
+              <a href="https://instagram.com/caadd__" target="_blank" rel="noopener noreferrer"
+                class="contact-full__social">Instagram ↗</a>
+              <a href="https://www.linkedin.com/in/irsyaad-fatahilah-1329b91b5/" target="_blank"
+                rel="noopener noreferrer" class="contact-full__social">LinkedIn ↗</a>
+              <a href="https://github.com/irsyaad06" target="_blank" rel="noopener noreferrer"
+                class="contact-full__social">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="site-footer contact-full__footer" role="contentinfo">
+          <p data-i18n="footer_copy">© 2024 IRSYAAD. All rights reserved.</p>
+        </footer>
+      </section>
+    </div>
+  </div><!-- /page-wrapper -->
+
+  <!-- =====================================================
+       PROJECT IMAGES OVERLAY — Fixed to left side
+  ====================================================== -->
+  <div class="detail-images-overlay" id="detail-images-overlay" aria-hidden="true" hidden>
+    <div class="detail-images-overlay__inner" id="detail-images-content">
+      <!-- Populated dynamically by JS -->
+    </div>
+  </div>
+
+  <!-- =====================================================
+       PROJECT DETAIL PANEL — Fixed to viewport, completely
+       independent of scrolling layout
+  ====================================================== -->
+  <div class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-label="Project detail" hidden>
+    <button class="detail-panel__close" id="detail-close" aria-label="Close project detail">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div class="detail-panel__inner" id="detail-content">
+      <!-- Populated dynamically by JS -->
+    </div>
+  </div>
+
+  <!-- =====================================================
+       ABOUT CIRCLE — Expands from hero dot on click
+  ====================================================== -->
+  <div class="about-circle" id="about-circle" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-label="About Irsyaad">
+    <div class="about-circle__content">
+
+      <!-- LEFT: Photo -->
+      <div class="about-circle__photo-wrap">
+        <div class="about-circle__photo-placeholder" aria-label="Photo of Irsyaad">
+          <img src="assets/images/irssat.png" alt="Irsyaad Fatahilah" />
+        </div>
+        <p class="about-circle__availability">let us meet!</p>
+      </div>
+
+      <!-- RIGHT: Info -->
+      <div class="about-circle__text">
+        <p class="about-circle__label" data-i18n="about_label">About me</p>
+        <h2 class="about-circle__name">Irsyaad<br>Fatahilah</h2>
+        <p class="about-circle__title" data-i18n="about_title">Creative Developer · Indonesia</p>
+        <div class="about-circle__divider"></div>
+        <p class="about-circle__bio" data-i18n="about_bio">I build digital experiences that are sharp, purposeful, and
+          crafted to last. From full-stack web apps to embedded IoT systems — if it runs on a screen, I've probably
+          shipped it.</p>
+        <div class="about-circle__skills">
+          <span class="about-circle__skill">Laravel</span>
+          <span class="about-circle__skill">Vue.js</span>
+          <span class="about-circle__skill">React.js</span>
+          <span class="about-circle__skill">Vue.js</span>
+          <span class="about-circle__skill">Next.js</span>
+          <span class="about-circle__skill">TypeScript</span>
+          <span class="about-circle__skill">IoT / ESP32</span>
+          <span class="about-circle__skill">Docker</span>
+          <span class="about-circle__skill">MySQL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="about-circle__close" id="about-close" aria-label="Close about">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </svg>
+    <span data-i18n="about_btn_close">Kembali</span>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
