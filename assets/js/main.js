@@ -333,7 +333,7 @@
             duration: '1 Year',
             title: 'SIGAP JABAR - Dishut Jabar',
             description: 'Website yang dibangun untuk Mendukung rehabilitasi lahan kritis melalui pemetaan prioritas, monitoring lapangan berbasis bukti, serta transparansi kontribusi publik dan investasi.',
-            images: [],
+            images: ['assets/images/projects/sigapjabar1.png', 'assets/images/projects/sigapjabar2.png', 'assets/images/projects/sigapjabar3.png'],
             tags: ['Laravel PHP', 'React.js', 'MySQL', 'DBngin', 'TablePlus'],
             myTools: ['Antigravity', 'Gemini 3.1 Agent AI', 'Postman'],
             teamTools: ['Postman', 'ClickUp', 'Figma'],
@@ -352,8 +352,34 @@
             teamTools: [],
             link: 'https://bem.unikom.ac.id',
         },
-        gohireme: {
+        icmarket: {
             index: '04',
+            year: '2026',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'iC Market',
+            description: 'Adalah website yang E-Commerce yang dibangun untuk memudahkan mahasiswa dalam mencari template',
+            images: ['assets/images/projects/icmarket1.png', 'assets/images/projects/icmarket2.png'],
+            tags: ['Laravel PHP', 'Vue.js', 'Nuxt.js', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://market.icraftds.id',
+        },
+        icraftds: {
+            index: '05',
+            year: '2026',
+            role: 'Frontend Developer',
+            duration: '1 Year',
+            title: 'iCraft DS',
+            description: 'Adalah website yang Landing Page untuk Startup iCraft Digital Services',
+            images: ['assets/images/projects/iCraft.jpg'],
+            tags: ['Vue.js'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://icraftds.id',
+        },
+        gohireme: {
+            index: '06',
             year: '2025',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -366,7 +392,7 @@
             link: 'https://gohireme.id',
         },
         hmifunikom: {
-            index: '05',
+            index: '07',
             year: '2025',
             role: 'Backend Developer',
             duration: '1 Year',
@@ -379,7 +405,7 @@
             link: 'https://hmif.unikom.my.id',
         },
         innoventure: {
-            index: '06',
+            index: '08',
             year: '2025',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -392,7 +418,7 @@
             link: 'https://innoventure.unikom.my.id',
         },
         pilkahim: {
-            index: '07',
+            index: '09',
             year: '2025',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -405,7 +431,7 @@
             link: 'https://pilkahimif.unikom.my.id',
         },
         gamatif: {
-            index: '08',
+            index: '10',
             year: '2025',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -418,7 +444,7 @@
             link: 'https://gamatif.unikom.my.id',
         },
         sitelur: {
-            index: '09',
+            index: '11',
             year: '2023',
             role: 'UI/UX Design',
             duration: '1 Year',
@@ -431,7 +457,7 @@
             link: '#',
         },
         sidoku: {
-            index: '10',
+            index: '12',
             year: '2022',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -444,7 +470,7 @@
             link: '#',
         },
         cibeunying: {
-            index: '11',
+            index: '13',
             year: '2023',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -457,7 +483,7 @@
             link: '#',
         },
         savikindo: {
-            index: '12',
+            index: '14',
             year: '2022',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -470,7 +496,7 @@
             link: '#',
         },
         nobar: {
-            index: '13',
+            index: '15',
             year: '2024',
             role: 'Project Manager + Backend Developer',
             duration: '1 Year',
@@ -483,7 +509,7 @@
             link: 'https://nobarkuy.my.id/',
         },
         peminjaman: {
-            index: '14',
+            index: '16',
             year: '2026',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -496,7 +522,7 @@
             link: 'https://unikom.my.id',
         },
         simak: {
-            index: '15',
+            index: '17',
             year: '2022',
             role: 'Frontend Developer',
             duration: '1 Year',
@@ -509,7 +535,7 @@
             link: '#',
         },
         hubin: {
-            index: '16',
+            index: '18',
             year: '2022',
             role: 'Fullstack Developer',
             duration: '1 Year',
@@ -523,7 +549,7 @@
         },
     
         poktan07: {
-            index: '17',
+            index: '19',
             year: '2026',
             role: 'Fullstack Developer',
             duration: '1 Year',
