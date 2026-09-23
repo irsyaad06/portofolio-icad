@@ -86,7 +86,7 @@
       <ul class="fullscreen-menu__list">
         <li><a href="#hero" class="fullscreen-menu__link" data-menu-target="hero" data-i18n="menu_home">HOME</a></li>
         <li><a href="#work" class="fullscreen-menu__link" data-menu-target="work" data-i18n="menu_works">WORKS</a></li>
-        <li><a href="#organization" class="fullscreen-menu__link" data-menu-target="organization" data-i18n="menu_experience">EXPERIENCE</a></li>
+        <li><a href="organization.html" class="fullscreen-menu__link" data-menu-target="organization" data-i18n="menu_experience">EXPERIENCE</a></li>
         <li><a href="#contact" class="fullscreen-menu__link" data-menu-target="contact" data-i18n="menu_contact">CONTACT</a></li>
       </ul>
       <div class="fullscreen-menu__footer">
@@ -136,7 +136,6 @@
         </div>
 
         <div class="hero__availability" aria-label="Availability status">
-          <span class="hero__availability-dot" aria-hidden="true"></span>
           <span data-i18n-avail="available">Available for work</span>
         </div>
 
@@ -156,7 +155,7 @@
         <ol class="scroller__list">
           <li><a href="#hero" class="scroller__link" data-section="hero" aria-label="Hero">01</a></li>
           <li><a href="#work" class="scroller__link" data-section="work" aria-label="Works">02</a></li>
-          <li><a href="#organization" class="scroller__link" data-section="organization"
+          <li><a href="organization.html" class="scroller__link" data-section="organization"
               aria-label="Organization">03</a></li>
           <li><a href="#contact" class="scroller__link" data-section="contact" aria-label="Contact">04</a></li>
         </ol>
@@ -169,118 +168,468 @@
         <!-- 02 SELECTED WORKS -->
         <section id="work" class="section section--work" aria-label="Selected works">
           <div class="section__inner">
-            <header class="section__header">
-              <span class="section__kicker" data-i18n="work_kicker">02 / PORTFOLIO</span>
-              <h2 class="section__title" data-i18n="work_title" data-scramble>Selected<br>Works.</h2>
+            <header class="section__header section__header--with-filter">
+              <div>
+                <span class="section__kicker" data-i18n="work_kicker">02 / PORTFOLIO</span>
+                <h2 class="section__title" data-i18n="work_title" data-scramble>Karya<br>Pilihan.</h2>
+              </div>
+              <div class="filter-wrapper">
+                <label for="year-filter" class="filter-label" data-i18n="filter_label">Filter Tahun:</label>
+                <div class="filter-select-wrapper">
+                  <select id="year-filter" class="filter-select">
+                    <option value="all" data-i18n="filter_all">Semua Tahun</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                  </select>
+                  <svg class="filter-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
             </header>
 
-            <div class="work-list" role="list">
+<div class="work-list" role="list">
 
-              <article class="card reveal" role="listitem" data-project="enterprise">
-                <button class="card__link" aria-label="View detail: Enterprise Microservices">
+              <article class="card reveal" role="listitem" data-project="goturtle" data-year="2024-2025">
+                <button class="card__link" aria-label="View detail: Go-Turtle">
                   <div class="card__body">
                     <div class="card__meta">
                       <span class="card__index">01</span>
-                      <span class="card__year">2024</span>
+                      <span class="card__year">2024-2025</span>
                     </div>
-                    <h3 class="card__title" data-i18n="card1_title">Enterprise<br>Microservices</h3>
-                    <p class="card__desc" data-i18n="card1_desc">Scalable backend for a large-scale enterprise app, handling millions of daily requests with full observability.</p>
+                    <h3 class="card__title" data-i18n="card1_title">Go-Turtle</h3>
+                    <p class="card__desc" data-i18n="card1_desc">Website yang dibangun untuk memudahkan karyawan dinas perikanan dan kelautan dalam pendataan kedatangan penyu.</p>
                     <ul class="card__tags" aria-label="Tech stack">
-                      <li class="card__tag">Laravel</li>
-                      <li class="card__tag">Vue.js</li>
-                      <li class="card__tag">Docker</li>
-                      <li class="card__tag">Redis</li>
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Nest.js</li>
+                      <li class="card__tag">Java Spring Boot</li>
+                      <li class="card__tag">React.js</li>
+                      <li class="card__tag">PostgreSQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
                     </ul>
                   </div>
                   <div class="card__arrow" aria-hidden="true">
                     <span data-i18n="card_btn">View Detail</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </button>
               </article>
 
-              <article class="card reveal" role="listitem" data-project="iot">
-                <button class="card__link" aria-label="View detail: IoT Dashboard System">
+              <article class="card reveal" role="listitem" data-project="sigapjabar" data-year="2026">
+                <button class="card__link" aria-label="View detail: SIGAP JABAR">
                   <div class="card__body">
                     <div class="card__meta">
                       <span class="card__index">02</span>
-                      <span class="card__year">2024</span>
+                      <span class="card__year">2026</span>
                     </div>
-                    <h3 class="card__title" data-i18n="card2_title">IoT Dashboard<br>System</h3>
-                    <p class="card__desc" data-i18n="card2_desc">Real-time industrial monitoring platform with live data streams, alert management, and predictive analytics.</p>
+                    <h3 class="card__title" data-i18n="card2_title">SIGAP JABAR</h3>
+                    <p class="card__desc" data-i18n="card2_desc">Website yang dibangun untuk Mendukung rehabilitasi lahan kritis melalui pemetaan prioritas dan monitoring lapangan berbasis bukti.</p>
                     <ul class="card__tags" aria-label="Tech stack">
-                      <li class="card__tag">ESP32</li>
-                      <li class="card__tag">MQTT</li>
-                      <li class="card__tag">Vue.js</li>
-                      <li class="card__tag">Chart.js</li>
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">React.js</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
                     </ul>
                   </div>
                   <div class="card__arrow" aria-hidden="true">
                     <span data-i18n="card_btn">View Detail</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </button>
               </article>
 
-              <article class="card reveal" role="listitem" data-project="admin">
-                <button class="card__link" aria-label="View detail: Admin Panel Suite">
+              <article class="card reveal" role="listitem" data-project="bemunikom" data-year="2026">
+                <button class="card__link" aria-label="View detail: BEM Unikom">
                   <div class="card__body">
                     <div class="card__meta">
                       <span class="card__index">03</span>
-                      <span class="card__year">2023</span>
+                      <span class="card__year">2026</span>
                     </div>
-                    <h3 class="card__title" data-i18n="card3_title">Admin Panel<br>Suite</h3>
-                    <p class="card__desc" data-i18n="card3_desc">Fully customised back-office system built on Filament with role-based access, audit logs, and reporting.</p>
+                    <h3 class="card__title" data-i18n="card3_title">BEM Unikom</h3>
+                    <p class="card__desc" data-i18n="card3_desc">Website yang dibangun untuk mengenalkan BEM Unikom Kabinet Merajut Asa dan memudahkan sistem operasional internal BEM Unikom mulai dari Cashflow, Sekretariat,Absensi, Aktivitas Kerja hingga Pogram Kerja Kementerian secara Dinamis</p>
                     <ul class="card__tags" aria-label="Tech stack">
-                      <li class="card__tag">Laravel Filament</li>
-                      <li class="card__tag">Tailwind CSS</li>
-                      <li class="card__tag">Livewire</li>
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Vue.js</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
                     </ul>
                   </div>
                   <div class="card__arrow" aria-hidden="true">
                     <span data-i18n="card_btn">View Detail</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </button>
               </article>
 
-              <article class="card reveal" role="listitem" data-project="ecommerce">
-                <button class="card__link" aria-label="View detail: E-Commerce Platform">
+              <article class="card reveal" role="listitem" data-project="gohireme" data-year="2025">
+                <button class="card__link" aria-label="View detail: Go Hireme">
                   <div class="card__body">
                     <div class="card__meta">
                       <span class="card__index">04</span>
-                      <span class="card__year">2023</span>
+                      <span class="card__year">2025</span>
                     </div>
-                    <h3 class="card__title" data-i18n="card4_title">E-Commerce<br>Platform</h3>
-                    <p class="card__desc" data-i18n="card4_desc">High-performance headless storefront with sub-second load times and an integrated order management system.</p>
+                    <h3 class="card__title" data-i18n="card4_title">Go Hireme</h3>
+                    <p class="card__desc" data-i18n="card4_desc">Website yang dibangun untuk mengenalkan mencari pekerja lepas untuk melakukan suatu pekerjaan/ kebutuhan dari pencari pekerja</p>
                     <ul class="card__tags" aria-label="Tech stack">
-                      <li class="card__tag">Next.js</li>
-                      <li class="card__tag">Shopify API</li>
-                      <li class="card__tag">TypeScript</li>
-                      <li class="card__tag">Vercel</li>
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Vue.js (REST API - Microservices)</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
                     </ul>
                   </div>
                   <div class="card__arrow" aria-hidden="true">
-                    <span>View Detail</span>
+                    <span data-i18n="card_btn">View Detail</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
                 </button>
               </article>
 
+              <article class="card reveal" role="listitem" data-project="hmifunikom" data-year="2025">
+                <button class="card__link" aria-label="View detail: HMIF Unikom">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">05</span>
+                      <span class="card__year">2025</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card5_title">HMIF Unikom</h3>
+                    <p class="card__desc" data-i18n="card5_desc">Website yang dibangun untuk mengenalkan HMIF Unikom dan memudahkan sistem operasional internal HMIF Unikom mulai dari Cashflow, Sekretariat,Absensi, Mini Event & Mega Event Divisi secara Dinamis</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">React.js</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="innoventure" data-year="2025">
+                <button class="card__link" aria-label="View detail: Innoventure 2025">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">06</span>
+                      <span class="card__year">2025</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card6_title">Innoventure 2025</h3>
+                    <p class="card__desc" data-i18n="card6_desc">Website yang dibangun sebagai landing page, upload hasil lomba dan memperlihatkan leaderboard peserta serta, sistem penilaian serta oleh juri</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Vue.js (Monolith)</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="pilkahim" data-year="2025">
+                <button class="card__link" aria-label="View detail: PILKAHIM IF">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">07</span>
+                      <span class="card__year">2025</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card7_title">PILKAHIM IF</h3>
+                    <p class="card__desc" data-i18n="card7_desc">Website yang dibangun untuk melakukan E-Voting dan memperlihatkan Quick Count agar pemilihan tetap berpegang teguh terhadap prinsip LUBERJURDIL</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">HTML</li>
+                      <li class="card__tag">CSS</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="gamatif" data-year="2025">
+                <button class="card__link" aria-label="View detail: GAMATIF">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">08</span>
+                      <span class="card__year">2025</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card8_title">GAMATIF</h3>
+                    <p class="card__desc" data-i18n="card8_desc">Website yang dibangun untuk registrasi data maba, pemilihan kelompok acak dan juga buku saku maba serta fitur konfes untuk seluruh mahasiswa Teknik Informatika Unikom</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">HTML</li>
+                      <li class="card__tag">CSS</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="sitelur" data-year="2023">
+                <button class="card__link" aria-label="View detail: SITELUR">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">09</span>
+                      <span class="card__year">2023</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card9_title">SITELUR</h3>
+                    <p class="card__desc" data-i18n="card9_desc">Website yang dibangun untuk digitalisasi dokumen kinerja karyawan dalam pembayaran gaji lembur.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Vue.js (REST API - Microservices)</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="sidoku" data-year="2022">
+                <button class="card__link" aria-label="View detail: SIDOKU">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">10</span>
+                      <span class="card__year">2022</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card10_title">SIDOKU</h3>
+                    <p class="card__desc" data-i18n="card10_desc">Website yang dibangun untuk analisis pengelolaan barang dalam pengiriman.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Vue.js (REST API - Microservices)</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="cibeunying" data-year="2023">
+                <button class="card__link" aria-label="View detail: Pendataan Cibeunying">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">11</span>
+                      <span class="card__year">2023</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card11_title">Pendataan Cibeunying</h3>
+                    <p class="card__desc" data-i18n="card11_desc">Website yang dibangun untuk memudahkan karyawan dinas kecamatan cibeunying dalam mendata daerahnya.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Filament V3</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="savikindo" data-year="2022">
+                <button class="card__link" aria-label="View detail: Savikindo CMS">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">12</span>
+                      <span class="card__year">2022</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card12_title">Savikindo CMS</h3>
+                    <p class="card__desc" data-i18n="card12_desc">Website yang dibangun untuk kebutuhan promosi perusahaan Savikindo dengan metode CMS.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Vue.js</li>
+                      <li class="card__tag">Laravel PHP (Monolith)</li>
+                      <li class="card__tag">PostgreSQL</li>
+                      <li class="card__tag">DBeaver</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="nobar" data-year="2024">
+                <button class="card__link" aria-label="View detail: Nobar Kuy!">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">13</span>
+                      <span class="card__year">2024</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card13_title">Nobar Kuy!</h3>
+                    <p class="card__desc" data-i18n="card13_desc">Website yang dibangun untuk memudahkan para supporter bola dalam mencari tempat nobar yang terdekat.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">Vue.js (REST API - Microservices)</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="peminjaman" data-year="2026">
+                <button class="card__link" aria-label="View detail: Sistem Peminjaman">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">14</span>
+                      <span class="card__year">2026</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card14_title">Sistem Peminjaman</h3>
+                    <p class="card__desc" data-i18n="card14_desc">Website yang dibangun untuk memajukan kedisiplinan dan mematuhi aturan organisasi mengenai peminjaman barang.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">HTML</li>
+                      <li class="card__tag">CSS</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="simak" data-year="2022">
+                <button class="card__link" aria-label="View detail: Monitoring Simak.id">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">15</span>
+                      <span class="card__year">2022</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card15_title">Monitoring Simak.id</h3>
+                    <p class="card__desc" data-i18n="card15_desc">Website yang dibangun untuk kebutuhan monitoring dari aplikasi web SIMAK.id.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Vue.js</li>
+                      <li class="card__tag">Nuxt.js</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+              </article>
+
+              <article class="card reveal" role="listitem" data-project="hubin" data-year="2022">
+                <button class="card__link" aria-label="View detail: HUBIN HUMAS SMKN 13">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">16</span>
+                      <span class="card__year">2022</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card16_title">HUBIN HUMAS SMKN 13</h3>
+                    <p class="card__desc" data-i18n="card16_desc">Website yang dibangun untuk memudahkan penanggung jawab Praktik Kerja Industri dalam memanajemen siswanya.</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">MySQL</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+                            </article>
+
+              <article class="card reveal" role="listitem" data-project="poktan07" data-year="2026">
+                <button class="card__link" aria-label="View detail: Poktan07">
+                  <div class="card__body">
+                    <div class="card__meta">
+                      <span class="card__index">17</span>
+                      <span class="card__year">2026</span>
+                    </div>
+                    <h3 class="card__title" data-i18n="card17_title">Poktan07</h3>
+                    <p class="card__desc" data-i18n="card17_desc">Website yang dibangun untuk membantu kelompok tani RW07 pada desa di cibeunying untuk melakukan penjualan dan memudahkan agen dalam penjualannya</p>
+                    <ul class="card__tags" aria-label="Tech stack">
+                      <li class="card__tag">Laravel PHP</li>
+                      <li class="card__tag">HTML</li>
+                      <li class="card__tag">CSS</li>
+                      <li class="card__tag">MySQL</li>
+                      <li class="card__tag">DBngin</li>
+                      <li class="card__tag">TablePlus</li>
+                    </ul>
+                  </div>
+                  <div class="card__arrow" aria-hidden="true">
+                    <span data-i18n="card_btn">View Detail</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M1 8H15M8 1L15 8L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </button>
+
+
             </div>
-          </div>
         </section>
 
       </main>
@@ -307,153 +656,7 @@
 
     </div><!-- /split-layout -->
 
-    <!-- =====================================================
-       03 ORGANIZATIONAL EXPERIENCE (Full Page Horizontal Scroll)
-  ====================================================== -->
-    <div id="organization" class="section org-scroll-wrapper" aria-label="Organizational Experience">
-      <div class="org-sticky-container">
-        <section class="section--org">
-          <div class="section__inner">
-            <header class="section__header">
-              <span class="section__kicker" id="org-kicker" data-i18n="org_kicker">03 / EXPERIENCE</span>
-              <h2 class="section__title" id="org-title" data-i18n="org_title" data-scramble>Organisasi &<br>Peran.</h2>
-            </header>
 
-            <div class="timeline-container">
-              <div class="timeline-track" id="org-track" role="list">
-                <div class="timeline-line" aria-hidden="true"></div>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2022 - 2023</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">01</span>
-                    <h3 class="timeline-item__title" id="org-1-title" data-i18n="org_1_title">Ketua
-                      Himpunan<br>Mahasiswa Informatika</h3>
-                    <p class="timeline-item__desc" id="org-1-desc" data-i18n="org_1_desc">Memimpin lebih dari 50 anggota
-                      pengurus dalam menjalankan program kerja tingkat universitas dan nasional. Bertanggung jawab atas
-                      pengelolaan anggaran dan koordinasi antar divisi.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2021 - 2022</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">02</span>
-                    <h3 class="timeline-item__title" id="org-2-title" data-i18n="org_2_title">Kepala
-                      Divisi<br>Penelitian & Pengembangan</h3>
-                    <p class="timeline-item__desc" id="org-2-desc" data-i18n="org_2_desc">Merumuskan kurikulum pelatihan
-                      teknologi untuk anggota himpunan, termasuk workshop Web Development dan IoT. Meningkatkan
-                      partisipasi mahasiswa dalam lomba tingkat nasional.</p>
-                  </div>
-                </article>
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2020 - 2021</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">03</span>
-                    <h3 class="timeline-item__title" id="org-3-title" data-i18n="org_3_title">Staf Ahli<br>Teknologi
-                      Informasi</h3>
-                    <p class="timeline-item__desc" id="org-3-desc" data-i18n="org_3_desc">Membantu pelaksanaan pelatihan
-                      teknologi dasar bagi mahasiswa baru dan menjadi asisten laboratorium untuk mata kuliah
-                      pemrograman.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2019 - 2020</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">04</span>
-                    <h3 class="timeline-item__title" id="org-4-title" data-i18n="org_4_title">Koordinator<br>Media
-                      Komunikasi</h3>
-                    <p class="timeline-item__desc" id="org-4-desc" data-i18n="org_4_desc">Mengelola publikasi kegiatan
-                      organisasi melalui platform digital. Mendesain poster dan konten interaktif untuk media sosial.
-                    </p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2019</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">05</span>
-                    <h3 class="timeline-item__title" id="org-5-title" data-i18n="org_5_title">Panitia Inti<br>Dies
-                      Natalis</h3>
-                    <p class="timeline-item__desc" id="org-5-desc" data-i18n="org_5_desc">Menyelenggarakan acara
-                      perayaan tahunan yang dihadiri ratusan mahasiswa. Mengkoordinasikan acara hiburan dan kompetisi
-                      akademik.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2018 - 2019</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">06</span>
-                    <h3 class="timeline-item__title" id="org-6-title" data-i18n="org_6_title">Anggota<br>Badan Eksekutif
-                    </h3>
-                    <p class="timeline-item__desc" id="org-6-desc" data-i18n="org_6_desc">Berperan aktif dalam
-                      menyalurkan aspirasi mahasiswa. Turut serta dalam perumusan kebijakan kegiatan kemahasiswaan
-                      tingkat fakultas.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2018</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">07</span>
-                    <h3 class="timeline-item__title" id="org-7-title" data-i18n="org_7_title">Ketua Pelaksana<br>Bakti
-                      Sosial</h3>
-                    <p class="timeline-item__desc" id="org-7-desc" data-i18n="org_7_desc">Memimpin kampanye penggalangan
-                      dana dan penyaluran bantuan ke daerah tertinggal. Mengatur logistik dan relawan di lapangan.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2017 - 2018</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">08</span>
-                    <h3 class="timeline-item__title" id="org-8-title" data-i18n="org_8_title">Sekretaris<br>Kepanitiaan
-                      Lomba</h3>
-                    <p class="timeline-item__desc" id="org-8-desc" data-i18n="org_8_desc">Menyusun proposal kegiatan,
-                      mengurus perizinan administrasi, dan mendokumentasikan seluruh rangkaian acara perlombaan tingkat
-                      regional.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2017</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">09</span>
-                    <h3 class="timeline-item__title" id="org-9-title" data-i18n="org_9_title">Relawan<br>Pendidikan</h3>
-                    <p class="timeline-item__desc" id="org-9-desc" data-i18n="org_9_desc">Mengajar teknologi dasar
-                      komputer kepada anak-anak sekolah dasar. Menyusun kurikulum pengenalan internet yang aman.</p>
-                  </div>
-                </article>
-
-                <article class="timeline-item reveal" role="listitem">
-                  <div class="timeline-item__year">2016</div>
-                  <div class="timeline-item__node"></div>
-                  <div class="timeline-item__content">
-                    <span class="timeline-item__index">10</span>
-                    <h3 class="timeline-item__title" id="org-10-title" data-i18n="org_10_title">Peserta<br>Diklat Dasar
-                    </h3>
-                    <p class="timeline-item__desc" id="org-10-desc" data-i18n="org_10_desc">Mempelajari kepemimpinan
-                      dasar, kerja sama tim, dan manajemen organisasi sebagai langkah awal bergabung dalam himpunan
-                      mahasiswa.</p>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
 
     <!-- =====================================================
        03 CONTACT — Sticky curtain (sits behind split-layout)
@@ -527,7 +730,7 @@
         <div class="about-circle__photo-placeholder" aria-label="Photo of Irsyaad">
           <img src="assets/images/irssat.png" alt="Irsyaad Fatahilah" />
         </div>
-        <p class="about-circle__availability">Open to work</p>
+        <p class="about-circle__availability">let us meet!</p>
       </div>
 
       <!-- RIGHT: Info -->
