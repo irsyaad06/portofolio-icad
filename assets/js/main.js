@@ -17,7 +17,7 @@
     const menuToggle = document.getElementById('menu-toggle');
     const menuText = document.getElementById('menu-toggle-text');
     const menuLinks = document.querySelectorAll('.fullscreen-menu__link');
-    let currentLang = 'ID';
+    let currentLang = localStorage.getItem('portfolio-lang') || 'ID';
 
     const i18n = {
         EN: {
@@ -25,79 +25,123 @@
             menu_btn_close: 'CLOSE',
             menu_home: 'HOME',
             menu_works: 'WORKS',
-            menu_experience: 'EXPERIENCE',
+            menu_experience: 'ORGANIZATION',
             menu_contact: 'CONTACT',
             hero_eyebrow: 'Creative Developer — ',
-            hero_sub: 'Crafting distinct digital experiences.<br>No filler.',
+            hero_sub: 'Crafting distinct digital experiences.',
             hero_about: 'About',
             hero_cta: 'View Work',
             work_kicker: '02 / PORTFOLIO',
-            work_title: 'Selected<br>Works.',
+            work_title: 'Karya<br>Pilihan.',
             card_btn: 'View Detail',
-            card1_title: 'Go Turtles',
-      card1_desc: 'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
-      card2_title: 'IoT Dashboard<br>System',
-      card2_desc: 'Real-time industrial monitoring platform with live data streams, alert management, and predictive analytics.',
-      card3_title: 'Admin Panel<br>Suite',
-      card3_desc: 'Fully customised back-office system built on Filament with role-based access, audit logs, and reporting.',
-      card4_title: 'E-Commerce<br>Platform',
-      card4_desc: 'High-performance headless storefront with sub-second load times and an integrated order management system.',
-      visual_tagline: 'I exist<br>because I create',
-      visual_meta1: 'Based in Bandung, Indonesia',
-      visual_meta2: 'Enjoy the experiences',
-      visual_meta3: 'peace out',
-      contact_wave: 'something.',
-      footer_copy: '\u00a9 2024 IRSYAAD. All rights reserved.',
+            filter_label: 'Filter Year:',
+            filter_all: 'All Years',
+            card1_title: 'Go-Turtle',
+            card1_desc: 'Website built to facilitate marine and fisheries department employees in recording turtle arrivals.',
+            card2_title: 'SIGAP JABAR',
+            card2_desc: 'Website built to support critical land rehabilitation through priority mapping and evidence-based field monitoring.',
+            card3_title: 'BEM Unikom',
+            card3_desc: 'Website built to introduce BEM Unikom Kabinet Merajut Asa and streamline internal operational systems dynamically.',
+            card4_title: 'Go Hireme',
+            card4_desc: 'Website built to introduce freelancers to perform jobs or meet the needs of job seekers.',
+            card5_title: 'HMIF Unikom',
+            card5_desc: 'Website built to introduce HMIF Unikom and streamline its internal operational systems dynamically.',
+            card6_title: 'Innoventure 2025',
+            card6_desc: 'Website built as a landing page to upload competition results and display participant leaderboards and judging systems.',
+            card7_title: 'PILKAHIM IF',
+            card7_desc: 'Website built for E-Voting and displaying Quick Counts to ensure the election upholds integrity principles.',
+            card8_title: 'GAMATIF',
+            card8_desc: 'Website built for new student registration, random group selection, new student handbook, and confession features.',
+            card9_title: 'SITELUR',
+            card9_desc: 'Website built to digitize employee performance documents for overtime pay.',
+            card10_title: 'SIDOKU',
+            card10_desc: 'Website built for analyzing the management of goods in delivery.',
+            card11_title: 'Pendataan Cibeunying',
+            card11_desc: 'Website built to facilitate district employees in collecting regional data.',
+            card12_title: 'Savikindo CMS',
+            card12_desc: 'Website built for company promotional needs with a CMS for easy content management.',
+            card13_title: 'Nobar Kuy!',
+            card13_desc: 'Website built to make it easier for football supporters to find the nearest viewing locations.',
+            card14_title: 'Sistem Peminjaman',
+            card14_desc: 'Website built to promote discipline and comply with organizational rules regarding borrowing items.',
+            card15_title: 'Monitoring Simak.id',
+            card15_desc: 'Website built for monitoring the SIMAK.id web application.',
+            card16_title: 'HUBIN HUMAS SMKN 13',
+            card16_desc: 'Website built to facilitate the person in charge of Industrial Work Practices in managing students.',
+            card17_title: 'Poktan07',
+            card17_desc: 'Website built to assist the RW07 farmer group in Cibeunying village with sales and to facilitate agents in selling.',
+            visual_tagline: 'I exist<br>because I create',
+            visual_meta1: 'Based in Bandung, Indonesia',
+            visual_meta2: 'Enjoy the experiences',
+            visual_meta3: 'peace out',
+            contact_wave: 'something.',
+            footer_copy: '\u00a9 2024 IRSYAAD. All rights reserved.',
             contact_title: 'Let\'s build<br>',
             about_btn_close: 'Back',
             about_label: 'About me',
             about_title: 'Creative Developer · Indonesia',
             about_bio: 'I build digital experiences that are sharp, purposeful, and crafted to last. From full-stack web apps to embedded IoT systems — if it runs on a screen, I\'ve probably shipped it.',
-            org_kicker: '03 / EXPERIENCE',
+            org_kicker: '03 / ORGANIZATION',
             org_title: 'Organizations &<br>Roles.',
-            org_1_title: 'Head of Informatics<br>Student Association',
-            org_1_desc: 'Led over 50 board members in executing university and national level programs. Responsible for budget management and inter-division coordination.',
-            org_2_title: 'Head of Research<br>& Development Division',
-            org_2_desc: 'Formulated technology training curriculum for members, including Web Development and IoT workshops. Increased student participation in national competitions.',
-            org_3_title: 'IT Expert<br>Staff',
-            org_3_desc: 'Assisted in basic technology training for new students and served as a laboratory assistant for programming courses.',
-            org_4_title: 'Communication Media<br>Coordinator',
-            org_4_desc: 'Managed the publication of organizational activities through digital platforms. Designed interactive posters and content for social media.',
-            org_5_title: 'Core Committee<br>of Anniversary',
-            org_5_desc: 'Organized an annual celebration event attended by hundreds of students. Coordinated entertainment and academic competitions.',
-            org_6_title: 'Executive Board<br>Member',
-            org_6_desc: 'Played an active role in channeling student aspirations. Participated in the formulation of policies for student activities at the faculty level.',
-            org_7_title: 'Chief Executive<br>of Social Service',
-            org_7_desc: 'Led a fundraising campaign and distributed aid to underdeveloped areas. Managed logistics and field volunteers.',
-            org_8_title: 'Secretary<br>of Competition Committee',
-            org_8_desc: 'Drafted event proposals, handled administrative permits, and documented the entire series of regional-level competition events.',
-            org_9_title: 'Education<br>Volunteer',
-            org_9_desc: 'Taught basic computer technology to elementary school children. Developed a curriculum for safe internet introduction.',
-            org_10_title: 'Participant<br>of Basic Training',
-            org_10_desc: 'Learned basic leadership, teamwork, and organizational management as the first step in joining the student association.'
+            org_1_title: 'Coordinating Minister of Technology &<br>Creative Economy BEM Unikom',
+            org_1_desc: '',
+            org_2_title: 'General Chairman of Informatics<br>Engineering Student Association Unikom',
+            org_2_desc: '',
+            org_3_title: 'General Chairman of Youth Mosque<br>Al-Muhajirin',
+            org_3_desc: '',
+            org_4_title: 'Vice Commander of PMR<br>SMKN 13 Bandung',
+            org_4_desc: '',
+            org_5_title: 'Co-Founder + General Chairman<br>of Aku Berkarya',
+            org_5_desc: ''
         },
         ID: {
             menu_btn: 'MENU',
             menu_btn_close: 'TUTUP',
             menu_home: 'BERANDA',
             menu_works: 'KARYA',
-            menu_experience: 'PENGALAMAN',
+            menu_experience: 'ORGANISASI',
             menu_contact: 'KONTAK',
             hero_eyebrow: 'Pengembang Kreatif — ',
-            hero_sub: 'Menciptakan pengalaman digital yang berbeda.<br>Tanpa basa-basi.',
+            hero_sub: 'Menciptakan pengalaman digital yang berbeda.',
             hero_about: 'Tentang',
             hero_cta: 'Lihat Karya',
             work_kicker: '02 / PORTOFOLIO',
             work_title: 'Karya<br>Pilihan.',
             card_btn: 'Lihat Detail',
-            card1_title: 'Go Turtles',
-      card1_desc: 'Go Turtles is a platform that helps you to start an eco-friendly lifestyle.',
-      card2_title: 'Dasbor IoT<br>Industri',
-      card2_desc: 'Platform pemantauan industri real-time yang menghubungkan ratusan sensor ESP32 via MQTT ke dasbor terpusat.',
-      card3_title: 'Admin Panel<br>Suite',
-      card3_desc: 'Sistem back-office multi-tenant berbasis Laravel Filament dengan modul RBAC, audit log, dan pembuat laporan.',
-      card4_title: 'Platform<br>E-Commerce',
-      card4_desc: 'Storefront headless berbasis Next.js yang mencapai LCP sub-800ms via edge caching dan optimasi gambar CDN.',
+            filter_label: 'Filter Tahun:',
+            filter_all: 'Semua Tahun',
+            card1_title: 'Go-Turtle',
+            card1_desc: 'Website yang dibangun untuk memudahkan karyawan dinas perikanan dan kelautan dalam pendataan kedatangan penyu.',
+            card2_title: 'SIGAP JABAR',
+            card2_desc: 'Website yang dibangun untuk Mendukung rehabilitasi lahan kritis melalui pemetaan prioritas dan monitoring lapangan berbasis bukti.',
+            card3_title: 'BEM Unikom',
+            card3_desc: 'Website yang dibangun untuk mengenalkan BEM Unikom Kabinet Merajut Asa dan memudahkan sistem operasional internal BEM Unikom mulai dari Cashflow, Sekretariat,Absensi, Aktivitas Kerja hingga Pogram Kerja Kementerian secara Dinamis',
+            card4_title: 'Go Hireme',
+            card4_desc: 'Website yang dibangun untuk mencari pekerja lepas untuk melakukan suatu pekerjaan/ kebutuhan dari pencari pekerja',
+            card5_title: 'HMIF Unikom',
+            card5_desc: 'Website yang dibangun untuk mengenalkan HMIF Unikom dan memudahkan sistem operasional internal HMIF Unikom mulai dari Cashflow, Sekretariat,Absensi, Mini Event & Mega Event Divisi secara Dinamis',
+            card6_title: 'Innoventure 2025',
+            card6_desc: 'Website yang dibangun sebagai landing page, upload hasil lomba dan memperlihatkan leaderboard peserta serta, sistem penilaian serta oleh juri',
+            card7_title: 'PILKAHIM IF',
+            card7_desc: 'Website yang dibangun untuk melakukan E-Voting dan memperlihatkan Quick Count agar pemilihan tetap berpegang teguh terhadap prinsip LUBERJURDIL',
+            card8_title: 'GAMATIF',
+            card8_desc: 'Website yang dibangun untuk registrasi data maba, pemilihan kelompok acak dan juga buku saku maba serta fitur konfes untuk seluruh mahasiswa Teknik Informatika Unikom',
+            card9_title: 'SITELUR',
+            card9_desc: 'Website yang dibangun untuk digitalisasi dokumen kinerja karyawan dalam pembayaran gaji lembur.',
+            card10_title: 'SIDOKU',
+            card10_desc: 'Website yang dibangun untuk analisis pengelolaan barang dalam pengiriman.',
+            card11_title: 'Pendataan Cibeunying',
+            card11_desc: 'Website yang dibangun untuk memudahkan karyawan dinas kecamatan cibeunying dalam mendata daerahnya.',
+            card12_title: 'Savikindo CMS',
+            card12_desc: 'Website yang dibangun untuk kebutuhan promosi perusahaan Savikindo dengan metode CMS.',
+            card13_title: 'Nobar Kuy!',
+            card13_desc: 'Website yang dibangun untuk memudahkan para supporter bola dalam mencari tempat nobar yang terdekat.',
+            card14_title: 'Sistem Peminjaman',
+            card14_desc: 'Website yang dibangun untuk memajukan kedisiplinan dan mematuhi aturan organisasi mengenai peminjaman barang.',
+            card15_title: 'Monitoring Simak.id',
+            card15_desc: 'Website yang dibangun untuk kebutuhan monitoring dari aplikasi web SIMAK.id.',
+            card16_title: 'HUBIN HUMAS SMKN 13',
+            card16_desc: 'Website yang dibangun untuk memudahkan pengelola siswa yang akan praktek kerja industri.',
       visual_tagline: 'Aku ada<br>karena aku berkarya',
       visual_meta1: 'Berbasis di Bandung, Indonesia',
       visual_meta2: 'Nikmati pengalamannya',
@@ -109,28 +153,18 @@
             about_label: 'Tentang saya',
             about_title: 'Pengembang Kreatif · Indonesia',
             about_bio: 'Saya membangun pengalaman digital yang tajam, bertujuan, dan dibuat untuk bertahan lama. Dari aplikasi web full-stack hingga sistem IoT tertanam — jika itu berjalan di layar, saya mungkin pernah merilisnya.',
-            org_kicker: '03 / PENGALAMAN',
+            org_kicker: '03 / ORGANISASI',
             org_title: 'Organisasi &<br>Peran.',
-            org_1_title: 'Ketua Himpunan<br>Mahasiswa Informatika',
-            org_1_desc: 'Memimpin lebih dari 50 anggota pengurus dalam menjalankan program kerja tingkat universitas dan nasional. Bertanggung jawab atas pengelolaan anggaran dan koordinasi antar divisi.',
-            org_2_title: 'Kepala Divisi<br>Penelitian & Pengembangan',
-            org_2_desc: 'Merumuskan kurikulum pelatihan teknologi untuk anggota himpunan, termasuk workshop Web Development dan IoT. Meningkatkan partisipasi mahasiswa dalam lomba tingkat nasional.',
-            org_3_title: 'Staf Ahli<br>Teknologi Informasi',
-            org_3_desc: 'Membantu pelaksanaan pelatihan teknologi dasar bagi mahasiswa baru dan menjadi asisten laboratorium untuk mata kuliah pemrograman.',
-            org_4_title: 'Koordinator<br>Media Komunikasi',
-            org_4_desc: 'Mengelola publikasi kegiatan organisasi melalui platform digital. Mendesain poster dan konten interaktif untuk media sosial.',
-            org_5_title: 'Panitia Inti<br>Dies Natalis',
-            org_5_desc: 'Menyelenggarakan acara perayaan tahunan yang dihadiri ratusan mahasiswa. Mengkoordinasikan acara hiburan dan kompetisi akademik.',
-            org_6_title: 'Anggota<br>Badan Eksekutif',
-            org_6_desc: 'Berperan aktif dalam menyalurkan aspirasi mahasiswa. Turut serta dalam perumusan kebijakan kegiatan kemahasiswaan tingkat fakultas.',
-            org_7_title: 'Ketua Pelaksana<br>Bakti Sosial',
-            org_7_desc: 'Memimpin kampanye penggalangan dana dan penyaluran bantuan ke daerah tertinggal. Mengatur logistik dan relawan di lapangan.',
-            org_8_title: 'Sekretaris<br>Kepanitiaan Lomba',
-            org_8_desc: 'Menyusun proposal kegiatan, mengurus perizinan administrasi, dan mendokumentasikan seluruh rangkaian acara perlombaan tingkat regional.',
-            org_9_title: 'Relawan<br>Pendidikan',
-            org_9_desc: 'Mengajar teknologi dasar komputer kepada anak-anak sekolah dasar. Menyusun kurikulum pengenalan internet yang aman.',
-            org_10_title: 'Peserta<br>Diklat Dasar',
-            org_10_desc: 'Mempelajari kepemimpinan dasar, kerja sama tim, dan manajemen organisasi sebagai langkah awal bergabung dalam himpunan mahasiswa.'
+            org_1_title: 'Menteri Koordinator Teknologi &<br>Ekonomi Kreatif BEM Unikom',
+            org_1_desc: '',
+            org_2_title: 'Ketua Umum Himpunan Mahasiswa<br>Teknik Informatika Unikom',
+            org_2_desc: '',
+            org_3_title: 'Ketua Umum Remaja Masjid<br>Al-Muhajirin',
+            org_3_desc: '',
+            org_4_title: 'Wakil Komandan PMR<br>SMKN 13 Bandung',
+            org_4_desc: '',
+            org_5_title: 'Co-Founder + Ketua Umum<br>Aku Berkarya',
+            org_5_desc: ''
         }
     };
 
@@ -161,6 +195,7 @@
 
   langSwitch.addEventListener('click', () => {
     currentLang = currentLang === 'EN' ? 'ID' : 'EN';
+    localStorage.setItem('portfolio-lang', currentLang);
     applyTranslations(currentLang);
   });
 
@@ -223,14 +258,20 @@
 
     function openAbout() {
         const dot = document.getElementById('hero-dot');
-        const dotRect = dot.getBoundingClientRect();
-        const dotCenterX = dotRect.left + dotRect.width / 2;
-        const dotCenterY = dotRect.top + dotRect.height / 2;
+        let originX = 50;
+        let originY = 50;
 
-        const circleW = aboutCircle.offsetWidth;
-        const circleH = aboutCircle.offsetHeight;
-        const originX = 50 + ((dotCenterX - window.innerWidth / 2) / circleW) * 100;
-        const originY = 50 + ((dotCenterY - window.innerHeight / 2) / circleH) * 100;
+        if (dot) {
+            const dotRect = dot.getBoundingClientRect();
+            const dotCenterX = dotRect.left + dotRect.width / 2;
+            const dotCenterY = dotRect.top + dotRect.height / 2;
+
+            const circleW = aboutCircle.offsetWidth;
+            const circleH = aboutCircle.offsetHeight;
+            originX = 50 + ((dotCenterX - window.innerWidth / 2) / circleW) * 100;
+            originY = 50 + ((dotCenterY - window.innerHeight / 2) / circleH) * 100;
+        }
+
         aboutCircle.style.transformOrigin = `${originX}% ${originY}%`;
 
         document.body.classList.add('about-open');
@@ -248,14 +289,20 @@
         aboutBtn.focus();
     }
 
-    aboutBtn.addEventListener('click', () => {
-        if (window.innerWidth <= 860) {
-            window.location.href = 'about.html';
-            return;
-        }
-        openAbout();
-    });
-    aboutClose.addEventListener('click', closeAbout);
+    if (aboutBtn) {
+        aboutBtn.addEventListener('click', () => {
+            if (window.innerWidth <= 860) {
+                window.location.href = 'about.html';
+                return;
+            }
+            openAbout();
+        });
+    }
+
+    if (aboutClose) {
+        aboutClose.addEventListener('click', closeAbout);
+    }
+
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && document.body.classList.contains('about-open')) {
             closeAbout();
@@ -266,65 +313,228 @@
        PROJECT DATA — source of truth for detail panel content
     ========================================================================= */
     const PROJECTS = {
-        enterprise: {
+        goturtle: {
             index: '01',
-            year: '2025',
-            role: 'CEO & Full Stack Developer',
-            duration: '4 months',
-            title: 'GO-TURTLE',
-            description:
-                'GO-TURTLE is an integrated digital solution connecting community-based ecotourism with marine biodiversity conservation at Pangumbahan Beach, Sukabumi. It enables visitors to participate directly in sea turtle preservation programs, such as observing night-time egg-laying and hatchling releases.\n\nKey Features:\n• Conservation Ticketing & Tourism\n• Hatchling Population Tracker\n• Public Conservation Donation\n• Educational Blog & Travel Guide',
-            images: [
-                'assets/images/goturtles.png',
-            ],
-            tags: ['Laravel', 'React.js', 'Nest.js','Java Springboot', 'PostgreSQL', 'Nginx'],
+            year: '2024-2025',
+            role: 'Backend Developer, Frontend Developer',
+            duration: '2 Years',
+            title: 'Go-Turtle | DKP Jabar',
+            description: 'Website yang dibangun untuk memudahkan karyawan dinas perikanan dan kelautan dalam pendataan kedatangan penyu dan memudahkan stakeholder dinas untuk melihat kinerja karyawan serta untuk promosi konservasi penyu kepada masyarakat umum.',
+            images: ['assets/images/go-turtle1.png', 'assets/images/go-turtle2.png', 'assets/images/go-turtle3.png'],
+            tags: ['Laravel PHP', 'Nest.js', 'Java Spring Boot', 'React.js', 'PostgreSQL', 'DBngin', 'TablePlus'],
+            myTools: ['Postman', 'ClickUp'],
+            teamTools: ['Postman', 'ClickUp', 'Figma'],
             link: 'https://go-turtle.jabarprov.go.id/',
         },
-        iot: {
+        sigapjabar: {
             index: '02',
-            year: '2024',
-            role: 'Embedded + Web Developer',
-            duration: '4 months',
-            title: 'IoT Dashboard\nSystem',
-            description:
-                'A real-time industrial monitoring and control platform connecting hundreds of ESP32-based sensors via MQTT to a central dashboard. Features live data streams, configurable alert thresholds, device grouping, and a predictive-maintenance module.\n\nThe frontend renders thousands of data points per minute using canvas-based charting without dropping frames.',
-            images: [
-                'https://placehold.co/800x500/1a1a1a/e0e0e0?text=IoT+Preview+1',
-                'https://placehold.co/800x500/1a1a1a/e0e0e0?text=IoT+Preview+2'
-            ],
-            tags: ['ESP32', 'MQTT', 'Vue.js', 'Chart.js', 'Node.js', 'WebSockets', 'InfluxDB'],
-            link: '#',
+            year: '2026',
+            role: 'Backend Developer (Modul Auth + Role-Based Access Control & Modul Investasi)',
+            duration: '1 Year',
+            title: 'SIGAP JABAR - Dishut Jabar',
+            description: 'Website yang dibangun untuk Mendukung rehabilitasi lahan kritis melalui pemetaan prioritas, monitoring lapangan berbasis bukti, serta transparansi kontribusi publik dan investasi.',
+            images: [],
+            tags: ['Laravel PHP', 'React.js', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['Antigravity', 'Gemini 3.1 Agent AI', 'Postman'],
+            teamTools: ['Postman', 'ClickUp', 'Figma'],
+            link: 'https://dishut.public.unikom.my.id/',
         },
-        admin: {
+        bemunikom: {
             index: '03',
-            year: '2023',
-            role: 'Backend Developer',
-            duration: '3 months',
-            title: 'Admin Panel\nSuite',
-            description:
-                'A multi-tenant back-office management system built on the Laravel Filament ecosystem. Includes a granular RBAC module, a full audit-log trail for compliance, customisable data-export pipelines, and a plugin-based report builder.\n\nDesigned for non-technical operators — every complex workflow reduced to a single guided form.',
-            images: [
-                'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Admin+Preview+1',
-                'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Admin+Preview+2'
-            ],
-            tags: ['Laravel Filament', 'Livewire', 'Tailwind CSS', 'MySQL', 'Spatie Permissions'],
-            link: '#',
+            year: '2026',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'BEM Unikom',
+            description: 'Website yang dibangun untuk mengenalkan BEM Unikom Kabinet Merajut Asa dan memudahkan sistem operasional internal BEM Unikom mulai dari Cashflow, Sekretariat,Absensi, Aktivitas Kerja hingga Pogram Kerja Kementerian secara Dinamis',
+            images: ['assets/images/bemunikom.png'],
+            tags: ['Laravel PHP', 'Vue.js', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://bem.unikom.ac.id',
         },
-        ecommerce: {
+        gohireme: {
             index: '04',
+            year: '2025',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Go Hireme',
+            description: 'Website yang dibangun untuk mengenalkan mencari pekerja lepas untuk melakukan suatu pekerjaan/ kebutuhan dari pencari pekerja',
+            images: ['assets/images/gohireme.png'],
+            tags: ['Laravel PHP', 'Vue.js (REST API - Microservices)', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['Visual Studio Code', 'Blackbox AI Agent'],
+            teamTools: [],
+            link: 'https://gohireme.id',
+        },
+        hmifunikom: {
+            index: '05',
+            year: '2025',
+            role: 'Backend Developer',
+            duration: '1 Year',
+            title: 'HMIF Unikom',
+            description: 'Website yang dibangun untuk mengenalkan HMIF Unikom dan memudahkan sistem operasional internal HMIF Unikom mulai dari Cashflow, Sekretariat,Absensi, Mini Event & Mega Event Divisi secara Dinamis',
+            images: ['assets/images/hmifunikom.png'],
+            tags: ['Laravel PHP', 'React.js', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://hmif.unikom.my.id',
+        },
+        innoventure: {
+            index: '06',
+            year: '2025',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Innoventure 2025',
+            description: 'Website yang dibangun sebagai landing page, upload hasil lomba dan memperlihatkan leaderboard peserta serta, sistem penilaian serta oleh juri',
+            images: ['assets/images/innoventure1.png', 'assets/images/innoventure2.png'],
+            tags: ['Laravel PHP', 'Vue.js (Monolith)', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://innoventure.unikom.my.id',
+        },
+        pilkahim: {
+            index: '07',
+            year: '2025',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'PILKAHIM IF',
+            description: 'Website yang dibangun untuk melakukan E-Voting dan memperlihatkan Quick Count agar pemilihan tetap berpegang teguh terhadap prinsip LUBERJURDIL',
+            images: [],
+            tags: ['Laravel PHP', 'HTML', 'CSS', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://pilkahimif.unikom.my.id',
+        },
+        gamatif: {
+            index: '08',
+            year: '2025',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Gathering Maba Teknik Informatika',
+            description: 'Website yang dibangun untuk registrasi data maba, pemilihan kelompok acak dan juga buku saku maba serta fitur konfes untuk seluruh mahasiswa Teknik Informatika Unikom',
+            images: ['assets/images/gamatif1.png', 'assets/images/gamatif2.png'],
+            tags: ['Laravel PHP', 'HTML', 'CSS', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://gamatif.unikom.my.id',
+        },
+        sitelur: {
+            index: '09',
             year: '2023',
-            role: 'Frontend Lead',
-            duration: '5 months',
-            title: 'E-Commerce\nPlatform',
-            description:
-                'A headless storefront built with Next.js consuming the Shopify Storefront API. Achieves sub-800ms LCP via aggressive edge caching, incremental static regeneration, and image optimisation at the CDN layer.\n\nCustom checkout flow, loyalty-points UI, and an integrated order-management dashboard for the operations team.',
-            images: [
-                'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Ecommerce+Preview+1',
-                'https://placehold.co/800x500/1a1a1a/e0e0e0?text=Ecommerce+Preview+2'
-            ],
-            tags: ['Next.js', 'TypeScript', 'Shopify API', 'Vercel', 'TailwindCSS', 'SWR'],
+            role: 'UI/UX Design',
+            duration: '1 Year',
+            title: 'SITELUR',
+            description: 'Website yang dibangun untuk digitalisasi dokumen kinerja karyawan BR**S dan memudahkan stakeholder untuk melihat kinerja lembur karyawan dalam pembayaran gaji lembur',
+            images: [],
+            tags: ['Laravel PHP', 'Vue.js (REST API - Microservices)'],
+            myTools: [],
+            teamTools: [],
             link: '#',
         },
+        sidoku: {
+            index: '10',
+            year: '2022',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'SIDOKU',
+            description: 'Website yang dibangun untuk analisis pengelolaan barang dalam pengiriman.',
+            images: [],
+            tags: ['Laravel PHP', 'Vue.js (REST API - Microservices)'],
+            myTools: [],
+            teamTools: [],
+            link: '#',
+        },
+        cibeunying: {
+            index: '11',
+            year: '2023',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Pendataan Cibeunying',
+            description: 'Website yang dibangun untuk memudahkan karyawan dinas kecamatan cibeunying dalam mendata daerahnya.',
+            images: [],
+            tags: ['Laravel PHP', 'Filament V3', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: [],
+            teamTools: [],
+            link: '#',
+        },
+        savikindo: {
+            index: '12',
+            year: '2022',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Savikindo CMS',
+            description: 'Website yang dibangun untuk kebutuhan promosi perusahaan Savikindo dengan metode CMS.',
+            images: [],
+            tags: ['Vue.js', 'Laravel PHP (Monolith)', 'PostgreSQL', 'DBeaver'],
+            myTools: [],
+            teamTools: [],
+            link: '#',
+        },
+        nobar: {
+            index: '13',
+            year: '2024',
+            role: 'Project Manager + Backend Developer',
+            duration: '1 Year',
+            title: 'Nobar Kuy!',
+            description: 'Website yang dibangun untuk memudahkan para supporter bola dalam mencari tempat nobar yang terdekat dengan rumahnya atau dengan tempat yang nyaman!.',
+            images: ['assets/images/nobarkuy1.jpg', 'assets/images/nobarkuy2.jpg'],
+            tags: ['Laravel PHP', 'Vue.js (REST API - Microservices)', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['Postman', 'ClickUp'],
+            teamTools: ['Postman', 'ClickUp', 'Figma'],
+            link: 'https://nobarkuy.my.id/',
+        },
+        peminjaman: {
+            index: '14',
+            year: '2026',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Sipesat',
+            description: 'Website yang dibangun untuk memajukan kedisiplinan dan mematuhi aturan organisasi mengenai peminjaman barang terhadap sekretariat organisasi',
+            images: ['assets/images/sipesat1.png', 'assets/images/sipesat2.png', 'assets/images/sipesat3.png'],
+            tags: ['Laravel PHP', 'HTML', 'CSS', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://unikom.my.id',
+        },
+        simak: {
+            index: '15',
+            year: '2022',
+            role: 'Frontend Developer',
+            duration: '1 Year',
+            title: 'Monitoring Simak.id',
+            description: 'Website yang dibangun untuk kebutuhan monitoring dari aplikasi web SIMAK.id.',
+            images: ['assets/images/simak-monitoring.webp'],
+            tags: ['Vue.js', 'Nuxt.js'],
+            myTools: [],
+            teamTools: [],
+            link: '#',
+        },
+        hubin: {
+            index: '16',
+            year: '2022',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'HUBIN HUMAS SMKN 13',
+            description: 'Website yang dibangun untuk memudahkan penanggung jawab Praktik Kerja Industri dalam memanajemen siswanya.',
+            images: ['assets/images/hubin-13.webp','assets/images/hubin-13-2.jpg'],
+            tags: ['Laravel PHP', 'MySQL'],
+            myTools: [],
+            teamTools: [],
+            link: '#',
+        },
+    
+        poktan07: {
+            index: '17',
+            year: '2026',
+            role: 'Fullstack Developer',
+            duration: '1 Year',
+            title: 'Poktan07',
+            description: 'Website yang dibangun untuk membantu kelompok tani RW07 pada desa di cibeunying untuk melakukan penjualan dan memudahkan agen dalam penjualannya',
+            images: ['assets/images/poktan1.png', 'assets/images/poktan2.png', 'assets/images/poktan3.png'],
+            tags: ['Laravel PHP', 'HTML', 'CSS', 'MySQL', 'DBngin', 'TablePlus'],
+            myTools: ['AntiGravity', 'Gemini AI Agent'],
+            teamTools: [],
+            link: 'https://poktan.unikom.my.id',
+        }
     };
 
     /* =========================================================================
@@ -354,9 +564,16 @@
         } else {
             document.body.classList.remove('on-org');
         }
+
+        if (id === 'contact') {
+            document.body.classList.add('on-contact');
+        } else {
+            document.body.classList.remove('on-contact');
+        }
     };
 
-    setActive('hero');
+    const initialSection = sections.length > 0 ? sections[0].id : 'hero';
+    setActive(initialSection);
 
     // We are tracking the window scroll now.
     const sectionObserver = new IntersectionObserver(entries => {
@@ -371,11 +588,13 @@
 
     sections.forEach(s => sectionObserver.observe(s));
 
-    // Fix: Force 'hero' active when scrolled to top (since sticky hero doesn't re-trigger observer on scroll up)
+    // Fix: Force initial section active when scrolled to top (since sticky elements might not re-trigger observer on scroll up)
     window.addEventListener('scroll', () => {
         if (window.scrollY < window.innerHeight * 0.3) {
-            if (document.body.classList.contains('not-on-hero')) {
+            if (initialSection === 'hero' && document.body.classList.contains('not-on-hero')) {
                 setActive('hero');
+            } else if (initialSection !== 'hero') {
+                setActive(initialSection);
             }
         }
     }, { passive: true });
@@ -385,8 +604,15 @@
     ========================================================================= */
     [...scrollerLinks, ...menuLinks].forEach(link => {
         link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            
+            // If it's a cross-page link, let it navigate naturally
+            if (href && !href.startsWith('#')) {
+                return;
+            }
+
             e.preventDefault();
-            const id = link.getAttribute('href').replace('#', '');
+            const id = href.replace('#', '');
             const isMenuLink = link.classList.contains('fullscreen-menu__link');
 
             const doScroll = () => {
@@ -456,6 +682,14 @@
             .map(p => `<p class="detail__description">${p.trim()}</p>`)
             .join('');
 
+        const myToolsHtml = project.myTools && project.myTools.length > 0
+            ? `<p class="detail__section-label">My Tools</p><div class="detail__tags">${project.myTools.map(t => `<span class="detail__tag">${t}</span>`).join('')}</div>`
+            : '';
+
+        const teamToolsHtml = project.teamTools && project.teamTools.length > 0 && project.teamTools[0] !== '-'
+            ? `<p class="detail__section-label">Team Tools</p><div class="detail__tags">${project.teamTools.map(t => `<span class="detail__tag">${t}</span>`).join('')}</div>`
+            : '';
+
         return `
       <span class="detail__kicker">${project.index} / Project Detail — ${project.year}</span>
       <h2 class="detail__title">${titleLines}</h2>
@@ -479,13 +713,19 @@
       ${descParagraphs}
       <p class="detail__section-label">Tech Stack</p>
       <div class="detail__tags">${tags}</div>
+      ${myToolsHtml}
+      ${teamToolsHtml}
       <hr class="detail__divider">
+      ${project.link && project.link !== '#' ? `
       <a href="${project.link}" class="detail__cta" target="_blank" rel="noopener noreferrer">
         Visit Project
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M1 7H13M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </a>
+      </a>` : `
+      <div class="detail__cta" style="color: #ff3333; border-bottom-color: #ff3333; cursor: not-allowed; opacity: 1;">
+        (Private Properties*)
+      </div>`}
     `;
     }
 
@@ -559,33 +799,8 @@
     });
 
     /* =========================================================================
-       HORIZONTAL SCROLL TIMELINE
+       HORIZONTAL SCROLL TIMELINE (Removed - Replaced with vertical gallery)
     ========================================================================= */
-    const orgWrapper = document.getElementById('organization');
-    const orgTrack = document.getElementById('org-track');
-
-    if (orgWrapper && orgTrack) {
-        window.addEventListener('scroll', () => {
-            const rect = orgWrapper.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-
-            if (rect.top <= 0 && rect.bottom >= viewportHeight) {
-                const scrollableDistance = rect.height - viewportHeight;
-                const scrolled = -rect.top;
-                let progress = scrolled / scrollableDistance;
-                progress = Math.max(0, Math.min(1, progress));
-
-                // 0.90 = viewport width minus 5vw on each side (matches section padding)
-                const maxTranslate = Math.max(0, orgTrack.scrollWidth - window.innerWidth * 0.90);
-                orgTrack.style.transform = `translate3d(-${progress * maxTranslate}px, 0, 0)`;
-            } else if (rect.top > 0) {
-                orgTrack.style.transform = `translate3d(0px, 0, 0)`;
-            } else if (rect.bottom < viewportHeight) {
-                const maxTranslate = Math.max(0, orgTrack.scrollWidth - window.innerWidth * 0.90);
-                orgTrack.style.transform = `translate3d(-${maxTranslate}px, 0, 0)`;
-            }
-        }, { passive: true });
-    }
 
     /* =========================================================================
        DARK MODE TOGGLE
@@ -801,6 +1016,57 @@
             });
         });
     }
+
+    /* =========================================================================
+       PROJECT FILTER LOGIC
+    ========================================================================= */
+    const yearFilter = document.getElementById('year-filter');
+    const projectCards = document.querySelectorAll('.work-list .card');
+
+    function updateGrid(selectedYear) {
+        let visibleCards = [];
+        projectCards.forEach(card => {
+            const cardYear = card.getAttribute('data-year') || "";
+            if (selectedYear === 'all' || cardYear === selectedYear || cardYear.includes(selectedYear)) {
+                card.style.display = 'block';
+                visibleCards.push(card);
+                // Re-trigger intersection observer for animation
+                card.classList.remove('is-visible');
+                setTimeout(() => card.classList.add('is-visible'), 50);
+            } else {
+                card.style.display = 'none';
+                card.classList.remove('is-visible');
+            }
+        });
+
+        // Apply grid classes to visible items
+        visibleCards.forEach((card, index) => {
+            card.classList.remove('is-left-col', 'is-right-col', 'is-last-row');
+            
+            if (index % 2 === 0) {
+                card.classList.add('is-left-col');
+            } else {
+                card.classList.add('is-right-col');
+            }
+
+            // Check if it's in the last row
+            const lastRowStartIndex = visibleCards.length - (visibleCards.length % 2 === 0 ? 2 : 1);
+            if (index >= lastRowStartIndex) {
+                card.classList.add('is-last-row');
+            }
+        });
+    }
+
+    if (yearFilter) {
+        // Initial setup
+        updateGrid('all');
+
+        yearFilter.addEventListener('change', (e) => {
+            updateGrid(e.target.value);
+        });
+    }
+
+
 
     /* =========================================================================
        COPY EMAIL TO CLIPBOARD
