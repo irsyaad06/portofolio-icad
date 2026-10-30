@@ -1,16 +1,25 @@
 <script setup>
 import { usePortfolioStore } from '@/stores/portfolio'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const store = usePortfolioStore()
 const router = useRouter()
+const route = useRoute()
 
-const navigateTo = (hash) => {
+const navigateTo = (target) => {
   store.closeMenu()
-  if (hash.startsWith('/')) {
-    router.push(hash)
+  if (target === 'organization') {
+    router.push('/organization')
   } else {
-    router.push({ path: '/', hash: hash })
+    if (route.path !== '/') {
+      router.push('/').then(() => {
+        setTimeout(() => {
+          store.scrollToSection(target)
+        }, 150)
+      })
+    } else {
+      store.scrollToSection(target)
+    }
   }
 }
 </script>
@@ -19,10 +28,10 @@ const navigateTo = (hash) => {
   <nav class="fullscreen-menu" id="fullscreen-menu" :aria-hidden="!store.isMenuOpen" :hidden="!store.isMenuOpen && false">
     <div class="fullscreen-menu__inner">
       <ul class="fullscreen-menu__list">
-        <li><a href="#hero" class="fullscreen-menu__link" @click.prevent="navigateTo('#hero')">{{ store.t('menu_home') }}</a></li>
-        <li><a href="#work" class="fullscreen-menu__link" @click.prevent="navigateTo('#work')">{{ store.t('menu_works') }}</a></li>
-        <li><a href="/organization" class="fullscreen-menu__link" @click.prevent="navigateTo('/organization')">{{ store.t('menu_experience') }}</a></li>
-        <li><a href="#contact" class="fullscreen-menu__link" @click.prevent="navigateTo('#contact')">{{ store.t('menu_contact') }}</a></li>
+        <li><a href="#" class="fullscreen-menu__link" @click.prevent="navigateTo('hero')">{{ store.t('menu_home') }}</a></li>
+        <li><a href="#" class="fullscreen-menu__link" @click.prevent="navigateTo('work')">{{ store.t('menu_works') }}</a></li>
+        <li><a href="/organization" class="fullscreen-menu__link" @click.prevent="navigateTo('organization')">{{ store.t('menu_experience') }}</a></li>
+        <li><a href="#" class="fullscreen-menu__link" @click.prevent="navigateTo('contact')">{{ store.t('menu_contact') }}</a></li>
       </ul>
       <div class="fullscreen-menu__footer">
         <div class="fullscreen-menu__theme-toggle">

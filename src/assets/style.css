@@ -316,9 +316,9 @@ button {
 }
 
 .hero__headline {
-    font-size: clamp(4.5rem, 8vw, 9.5rem);
+    font-size: clamp(2.5rem, 7vw, 9.5rem);
     font-weight: 900;
-    line-height: 0.88;
+    line-height: 0.92;
     letter-spacing: -0.05em;
     margin-bottom: 2.5rem;
     display: flex;
@@ -328,6 +328,7 @@ button {
 
 .hero__line {
     display: block;
+    white-space: nowrap;
 }
 
 .hero__sub {
@@ -387,6 +388,79 @@ button {
 .hero__about-btn:hover {
     background: var(--text);
     color: var(--bg);
+}
+
+/* Download CV button — solid pill */
+.hero__cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px solid var(--text);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    background: var(--text);
+    color: var(--bg);
+    transition: background var(--dur-mid) var(--ease-expo),
+        color var(--dur-mid) var(--ease-expo),
+        gap var(--dur-mid) var(--ease-expo);
+}
+
+.hero__cv-btn:hover {
+    background: transparent;
+    color: var(--text);
+    gap: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   HERO INTRO — scattered pieces assemble into place
+   -------------------------------------------------------------------------- */
+.hero--assemble .hero__eyebrow,
+.hero--assemble .hero__headline,
+.hero--assemble .hero__sub,
+.hero--assemble .hero__actions,
+.hero--assemble .hero__cta {
+    animation: none;
+}
+
+.hero--assemble .assemble-block {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate(var(--bx), var(--by)) rotate(var(--br)) scale(0.6);
+}
+
+.hero--assemble.blocks-assembled .assemble-block {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+    transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1) var(--bd),
+        opacity 0.7s ease var(--bd),
+        filter 1s ease var(--bd),
+        background var(--dur-mid) var(--ease-expo),
+        color var(--dur-mid) var(--ease-expo),
+        gap var(--dur-mid) var(--ease-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero--assemble .assemble-block {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero__headline {
+        font-size: clamp(2rem, 8.5vw, 3.5rem);
+    }
+    .hero__actions {
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+    }
 }
 
 /* Scroll Indicator */
@@ -449,11 +523,14 @@ button {
 .hero__animated-wrapper {
     display: inline-block;
     position: relative;
+    white-space: nowrap;
+    vertical-align: baseline;
 }
 
 .hero__animated-spacer {
     visibility: hidden;
     pointer-events: none;
+    white-space: nowrap;
 }
 
 .hero__animated-text {
@@ -461,6 +538,7 @@ button {
     top: 0;
     left: 0;
     display: inline-block;
+    white-space: nowrap;
     will-change: transform, opacity;
 }
 
@@ -499,6 +577,7 @@ button {
 /* The dot in IRSYAAD. — just fades out as circle expands from its position */
 .hero__dot {
     display: inline-block;
+    vertical-align: baseline;
     transition: opacity 0.2s ease 0.1s;
 }
 

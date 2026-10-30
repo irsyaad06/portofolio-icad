@@ -1,9 +1,10 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { usePortfolioStore } from '@/stores/portfolio'
 
 const router = useRouter()
+const route = useRoute()
 const store = usePortfolioStore()
 
 onMounted(() => {
@@ -74,7 +75,13 @@ onMounted(() => {
         return
       }
       
-      router.push({ path: '/', hash: '#' + id })
+      if (route.path !== '/') {
+        router.push('/').then(() => {
+          setTimeout(() => store.scrollToSection(id), 150)
+        })
+      } else {
+        store.scrollToSection(id)
+      }
       return
     }
 

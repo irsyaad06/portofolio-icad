@@ -20,6 +20,7 @@ export const usePortfolioStore = defineStore('portfolio', {
         hero_eyebrow: 'Creative Developer — ',
         hero_sub: 'Crafting distinct digital experiences.',
         hero_about: 'About',
+        hero_cv: 'Download CV',
         hero_cta: 'View Work',
         work_kicker: '02 / PORTFOLIO',
         work_title: 'Karya<br>Pilihan.',
@@ -94,6 +95,7 @@ export const usePortfolioStore = defineStore('portfolio', {
         hero_eyebrow: 'Pengembang Kreatif — ',
         hero_sub: 'Menciptakan pengalaman digital yang berbeda.',
         hero_about: 'Tentang',
+        hero_cv: 'Unduh CV',
         hero_cta: 'Lihat Karya',
         work_kicker: '02 / PORTOFOLIO',
         work_title: 'Karya<br>Pilihan.',
@@ -501,6 +503,24 @@ export const usePortfolioStore = defineStore('portfolio', {
             document.body.classList.add('on-contact');
         } else {
             document.body.classList.remove('on-contact');
+        }
+    },
+    scrollToSection(id) {
+        if (id === 'hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        } else if (id === 'contact') {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        } else {
+            const el = document.getElementById(id)
+            if (el) {
+                let top = 0
+                let currentEl = el
+                while (currentEl && currentEl !== document.body) {
+                    top += currentEl.offsetTop
+                    currentEl = currentEl.offsetParent
+                }
+                window.scrollTo({ top, behavior: 'smooth' })
+            }
         }
     }
   }
