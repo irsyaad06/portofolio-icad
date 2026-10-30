@@ -1,10 +1,18 @@
 <script setup>
 import { usePortfolioStore } from '@/stores/portfolio'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+
 const store = usePortfolioStore()
+const route = useRoute()
+
+const isLight = computed(() => {
+  return route.path === '/organization' || store.activeSection === 'organization' || store.activeSection === 'contact' || store.isMenuOpen
+})
 </script>
 
 <template>
-  <header class="global-header">
+  <header class="global-header" :class="{ 'is-on-dark': isLight }">
     <button class="lang-switch" id="lang-switch" aria-label="Switch Language" @click="store.toggleLang()">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
@@ -14,7 +22,7 @@ const store = usePortfolioStore()
       </svg>
       <span id="lang-text">{{ store.currentLang }}</span>
     </button>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu" @click="store.toggleMenu()">
+    <button class="menu-toggle" :class="{ 'is-light': isLight }" id="menu-toggle" aria-label="Toggle Menu" @click="store.toggleMenu()">
       <span class="menu-toggle__text" id="menu-toggle-text">{{ store.isMenuOpen ? store.t('menu_btn_close') : store.t('menu_btn') }}</span>
     </button>
   </header>

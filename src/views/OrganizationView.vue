@@ -6,9 +6,11 @@ const store = usePortfolioStore()
 
 onMounted(() => {
   store.setActiveSection('organization')
+  document.body.classList.add('on-org')
 })
 
 onUnmounted(() => {
+  document.body.classList.remove('on-org')
   store.setActiveSection('hero')
 })
 </script>

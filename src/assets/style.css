@@ -1674,8 +1674,10 @@ body.about-open .global-header {
 
 body.menu-open .global-header .menu-toggle,
 body.on-org .global-header .menu-toggle,
-body.on-contact .global-header .menu-toggle {
-    color: #fff;
+body.on-contact .global-header .menu-toggle,
+.global-header.is-on-dark .menu-toggle,
+.global-header .menu-toggle.is-light {
+    color: #fff !important;
 }
 
 body.detail-open .global-header .menu-toggle {

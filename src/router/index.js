@@ -49,4 +49,13 @@ const router = createRouter({
   }
 })
 
+router.afterEach((to) => {
+  if (to.path === '/organization') {
+    document.body.classList.add('on-org')
+    document.body.classList.add('not-on-hero')
+  } else {
+    document.body.classList.remove('on-org')
+  }
+})
+
 export default router

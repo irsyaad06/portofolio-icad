@@ -11,6 +11,7 @@ import { onMounted, onUnmounted } from 'vue'
 const store = usePortfolioStore()
 
 let sectionObserver = null
+let handleScroll = null
 
 onMounted(() => {
   const sections = document.querySelectorAll('.section')
@@ -29,7 +30,7 @@ onMounted(() => {
   sections.forEach(s => sectionObserver.observe(s))
 
   // Initial fix
-  const handleScroll = () => {
+  handleScroll = () => {
     if (window.scrollY < window.innerHeight * 0.3) {
       if (document.body.classList.contains('not-on-hero')) {
         store.setActiveSection('hero')
@@ -41,6 +42,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (sectionObserver) sectionObserver.disconnect()
+  if (handleScroll) window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
